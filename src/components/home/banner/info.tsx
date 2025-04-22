@@ -1,12 +1,26 @@
 import React from "react";
-
+import { motion, Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import LoadingThreeDotsJumping from "./title";
 
 const Info: React.FC = () => {
+  const charVariants: Variants = {
+    jump: {
+      y: -30,
+      transition: {
+        duration: 0.8,
+        repeat: Infinity,
+        repeatType: "mirror",
+        ease: "easeInOut",
+      },
+    },
+  };
+
   return (
     <div className="flex flex-col justify-center h-full space-y-6">
+      {/* <LoadingThreeDotsJumping text="BOOST YOUR CRYPTO PROJECTS" /> */}
       <h2 className="text-white font-bold text-center leading-tight md:text-5xl xs:text-3xl">
-        BOOST YOUR <br /> CRYPTO PROJECTS
+        BOOST YOUR CRYPTO PROJECTS
       </h2>
       <p className="text-gray-400 text-center md:text-xl xs:text-sm items-center">
         The next generation gaming ecosystem for IGOs and NFT market

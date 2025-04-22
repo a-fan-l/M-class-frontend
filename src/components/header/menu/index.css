@@ -1,0 +1,58 @@
+.menu {
+  display: flex;
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  height: 2em;
+  display: block;
+  overflow: hidden;
+}
+
+.menu-text {
+  display: block;
+  position: relative;
+  height: 200%;
+  transition: transform 0.3s ease;
+}
+
+.menu-text-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 100%;
+}
+
+.menu-text-inner:first-child {
+  color: #333;
+}
+
+.menu-text-inner:last-child {
+  color: #1890ff;
+}
+
+.menu-item:hover .menu-text {
+  transform: translateY(-50%);
+}
+
+/* 为每个菜单项添加不同的动画延迟 */
+.menu-item:nth-child(1):hover .menu-text {
+  transition-delay: 0s;
+}
+
+.menu-item:nth-child(2):hover .menu-text {
+  transition-delay: 0.1s;
+}
+
+.menu-item:nth-child(3):hover .menu-text {
+  transition-delay: 0.2s;
+}

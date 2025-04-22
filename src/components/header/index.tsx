@@ -30,6 +30,7 @@ const Index: React.FC<IIndexProps> = ({ name, isLogo }) => {
       name='M Class'
       // isLogo={isLogo}
       isMode
+      isMenu
       langProps={{
         data,
         current: olanguage,

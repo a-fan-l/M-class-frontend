@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 
-import Language, { LanguageProps } from './language';
-import Mode, { IIndexProps as ModeProps } from './mode';
+import Language, { LanguageProps } from '../language';
+import Mode, { IIndexProps as ModeProps } from '../mode';
 
 export interface HeaderToolsProps {
   children?: React.ReactNode;
