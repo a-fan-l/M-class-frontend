@@ -4,6 +4,8 @@ import { Badge } from '@components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@components/ui/avatar';
 import { cn } from '@utils/system/index';
 
+import './style.css'
+
 interface CourseItemProps {
   title: string;
   description: string;
@@ -27,7 +29,7 @@ export function CourseItem({
   className,
 }: CourseItemProps) {
   return (
-    <Card className={cn('w-full', className)}>
+    <Card className={cn('w-full', className )}>
       <CardHeader>
         <div className="flex items-center gap-4">
           <Avatar>
@@ -41,6 +43,13 @@ export function CourseItem({
         </div>
       </CardHeader>
       <CardContent>
+        <div className="w-full h-48 mb-4">
+          <img
+            src="/static/course/image.png"
+            alt="Project-Image"
+            style={{ width: '100%', height: '100%' }}
+          />
+        </div>
         <p className="text-sm text-muted-foreground">{description}</p>
         <div className="mt-4 flex items-center gap-2">
           <Badge variant="secondary">{duration}</Badge>

@@ -4,5 +4,13 @@
     "desc": "M Class | Automated DeFi Trading, Completely Trustless"
   },
   "title": "M Class",
-  "desc": "M Class DeFi Trading, Completely Trustless"
+  "desc": "M Class DeFi Trading, Completely Trustless",
+  "course": {
+    "title": "Our Courses",
+    "description": "Explore our wide range of courses designed to help you achieve your learning goals"
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Meet the team behind our courses and projects"
+  }
 }

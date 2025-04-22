@@ -82,7 +82,7 @@ export function CourseList({ className }: CourseListProps) {
           description="Learn the basics of HTML, CSS, and JavaScript"
           teacher={{
             name: "John Doe",
-            avatar: "/static/avatars/teacher-1.jpg"
+            avatar: "@public/static/course/image.png"
           }}
           duration="8 weeks"
           level="beginner"
@@ -93,7 +93,7 @@ export function CourseList({ className }: CourseListProps) {
           description="Master advanced React concepts and patterns"
           teacher={{
             name: "Jane Smith",
-            avatar: "/static/avatars/teacher-2.jpg"
+            avatar: "@public/static/course/image.png"
           }}
           duration="12 weeks"
           level="advanced"
@@ -104,7 +104,7 @@ export function CourseList({ className }: CourseListProps) {
           description="Learn the principles of good design"
           teacher={{
             name: "Mike Johnson",
-            avatar: "/static/avatars/teacher-3.jpg"
+            avatar: "@public/static/course/image.png"
           }}
           duration="6 weeks"
           level="intermediate"
