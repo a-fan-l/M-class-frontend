@@ -1,4 +1,4 @@
-import { LanguageData } from '@atoms/language';
+import { LanguageData } from '@/atoms/system/language';
 
 import den from '@public/static/language/en-US/dark.svg';
 import len from '@public/static/language/en-US/light.svg';

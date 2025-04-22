@@ -1,5 +1,5 @@
 import { MODE_STORAGE_KEY } from '@constants/system/index';
-import { modeAtom, openAtom, updateModeAtom, updateOpenAtom, ThemeMode } from '@atoms/base-mode';
+import { modeAtom, openAtom, updateModeAtom, updateOpenAtom, ThemeMode } from '@/atoms/system/base-mode';
 import { useAtom } from 'jotai';
 import storage from '@/utils/system/storage';
 
