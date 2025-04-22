@@ -1,5 +1,5 @@
 import { atom } from 'jotai';
-import { en } from '@constants/language';
+import { en } from '@constants/system/index';
 
 export type LanguageKey = keyof LanguageConfig;
 

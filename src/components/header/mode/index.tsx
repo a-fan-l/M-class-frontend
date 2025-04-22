@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useTheme } from 'next-themes';
 
-import {useMode} from '@hooks/useMode';
+import {useMode} from '@/hooks/system/useMode';
 import { ThemeMode } from '@atoms/base-mode';
 import Moon from '@public/static/mode/moon.svg';
 import Sun from '@public/static/mode/sun.svg';

@@ -3,7 +3,7 @@
 import * as React from 'react';
 
 import { LanguageData } from '@atoms/language';
-import { useMode } from '@hooks/useMode';
+import { useMode } from '@/hooks/system/useMode';
 
 export interface IIndexProps {
   data: LanguageData[];

@@ -1,8 +1,9 @@
 import React from "react";
-import { Box } from "@mui/material";
+import { Input } from '@components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@components/ui/select';
+import { cn } from '@utils/system/index';
 
-import CourseItem from "./item";
-
+import { CourseItem } from './item';
 
 const data = [
   {
@@ -40,14 +41,78 @@ const data = [
   },
 ];
 
-const CourseList = () => {
+interface CourseListProps {
+  className?: string;
+}
+
+export function CourseList({ className }: CourseListProps) {
   return (
-    <Box className="grid grid-cols-1 md:grid-cols-3 gap-8 xs:p-4">
-      {Array.from({ length: 6 }).map((_, index) => (
-        <CourseItem key={index} />
-      ))}
-    </Box>
+    <div className={cn('space-y-6', className)}>
+      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div className="flex-1">
+          <Input placeholder="Search courses..." className="max-w-sm" />
+        </div>
+        <div className="flex items-center gap-4">
+          <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Filter by level" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Levels</SelectItem>
+              <SelectItem value="beginner">Beginner</SelectItem>
+              <SelectItem value="intermediate">Intermediate</SelectItem>
+              <SelectItem value="advanced">Advanced</SelectItem>
+            </SelectContent>
+          </Select>
+          <Select>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Sort by" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="newest">Newest First</SelectItem>
+              <SelectItem value="price-low">Price: Low to High</SelectItem>
+              <SelectItem value="price-high">Price: High to Low</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <CourseItem
+          title="Introduction to Web Development"
+          description="Learn the basics of HTML, CSS, and JavaScript"
+          teacher={{
+            name: "John Doe",
+            avatar: "/static/avatars/teacher-1.jpg"
+          }}
+          duration="8 weeks"
+          level="beginner"
+          price={99}
+        />
+        <CourseItem
+          title="Advanced React Patterns"
+          description="Master advanced React concepts and patterns"
+          teacher={{
+            name: "Jane Smith",
+            avatar: "/static/avatars/teacher-2.jpg"
+          }}
+          duration="12 weeks"
+          level="advanced"
+          price={199}
+        />
+        <CourseItem
+          title="UI/UX Design Fundamentals"
+          description="Learn the principles of good design"
+          teacher={{
+            name: "Mike Johnson",
+            avatar: "/static/avatars/teacher-3.jpg"
+          }}
+          duration="6 weeks"
+          level="intermediate"
+          price={149}
+        />
+      </div>
+    </div>
   );
-};
+}
 
 export default CourseList;

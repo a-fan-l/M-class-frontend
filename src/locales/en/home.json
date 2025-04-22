@@ -1,21 +1,8 @@
 {
   "metadata": {
-    "title": "FairX | Automated DeFi Trading, Completely Trustless",
-    "desc": "FairX | Automated DeFi Trading, Completely Trustless"
+    "title": "M Class",
+    "desc": "M Class | Automated DeFi Trading, Completely Trustless"
   },
-  "title": "FairX",
-  "desc": "FairX | Automated DeFi Trading, Completely Trustless",
-  "btn": {
-    "enter": "Subscribe",
-    "download": "Download Logs",
-    "entering": "Subscribing"
-  },
-  "banner": {
-    "title": "Automated DeFi Trading, Completely Trustless",
-    "titleHighlight": "Trading",
-    "desc": "Coming soon, stay tuned!",
-    "email": "Enter email for incoming product launch",
-    "subscribesuccess": "Successfully subscribed",
-    "subscribeerror": "Failed to subscribe"
-  }
+  "title": "M Class",
+  "desc": "M Class DeFi Trading, Completely Trustless"
 }

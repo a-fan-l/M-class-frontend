@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 
 import Header, { HeaderProps } from './main';
-import useLang, { LanguageData } from '@/hooks/useLanguage';
+import useLang, { LanguageData } from '@/hooks/system/useLanguage';
 import { useRouter } from '@i18n/navigation';
 import '@styles/base.css';
 

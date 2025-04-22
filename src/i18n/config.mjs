@@ -1,4 +1,4 @@
-import { en, ko, uk, ru } from '@constants/language';
+import { en, ko, uk, ru } from '@/constants/system/index';
 
 export const d_language = en.value;
 

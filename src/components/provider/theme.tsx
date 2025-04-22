@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ThemeProvider as NextThemesProvider, ThemeProviderProps } from 'next-themes';
 
-import { MODE_STORAGE_KEY } from '@constants/system';
+import { MODE_STORAGE_KEY } from '@constants/system/index';
 
 export interface IIndexProps extends ThemeProviderProps {
   initialTheme?: string;

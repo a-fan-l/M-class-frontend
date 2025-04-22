@@ -3,8 +3,8 @@ import { useAtom, useAtomValue, useSetAtom } from 'jotai';
 import { useCreation } from 'ahooks';
 import { useTranslations } from 'next-intl';
 import { languageOpenAtom, currentLanguageAtom, LanguageData, changeLanguageAtom, showLanguageSelectorAtom } from '@atoms/language';
-import { setItem, getItem } from '@utils/storage';
-import { languages, LANGUAGE_STORAGE_KEY } from '@constants/index';
+import { setItem, getItem } from '@/utils/system/storage';
+import { languages, LANGUAGE_STORAGE_KEY } from '@/constants/system/index';
 import { useMode } from './useMode';
 
 export type { LanguageData };

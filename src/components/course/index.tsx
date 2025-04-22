@@ -1,15 +1,24 @@
 
-import React from "react";
-import { Box, Container } from "@mui/material";
+import { cn } from '@utils/system/index';
 
-import CourseList from "./list";
+import { CourseList } from './list';
 
-export default function Home() {
+interface CourseContentProps {
+  className?: string;
+}
+
+const CourseContent = ({ className }: CourseContentProps) => {
   return (
-    <Box className="min-h-screen mt-20">
-      <Container maxWidth="lg" className="px-10 py-10">
-        <CourseList />
-      </Container>
-    </Box>
+    <div className={cn('container mx-auto px-4 py-8', className)}>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-4">Our Courses</h1>
+        <p className="text-muted-foreground">
+          Explore our wide range of courses designed to help you achieve your learning goals
+        </p>
+      </div>
+      <CourseList />
+    </div>
   );
 }
+
+export default CourseContent;

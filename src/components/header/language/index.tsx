@@ -1,7 +1,7 @@
 'use client';
 import React, { useMemo } from 'react';
 
-import { useMode } from '@hooks/useMode';
+import { useMode } from '@/hooks/system/useMode';
 import Dlanguage from '@public/static/language/language.svg';
 import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover';
 

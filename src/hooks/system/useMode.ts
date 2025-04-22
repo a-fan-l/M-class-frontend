@@ -1,7 +1,7 @@
-import { MODE_STORAGE_KEY } from '@constants/system';
+import { MODE_STORAGE_KEY } from '@constants/system/index';
 import { modeAtom, openAtom, updateModeAtom, updateOpenAtom, ThemeMode } from '@atoms/base-mode';
 import { useAtom } from 'jotai';
-import storage from '@utils/storage';
+import storage from '@/utils/system/storage';
 
 export const useMode = () => {
   const [mode] = useAtom(modeAtom);
