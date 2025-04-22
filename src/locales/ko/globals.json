@@ -1,0 +1,20 @@
+{
+  "metadata": {
+    "title": "123 FairX - Automated DeFi Trading",
+    "desc": "123 Simplified Chinese translation for the Open Library"
+  },
+  "menu": {
+    "home": "123 Home",
+    "account": "123 Account",
+    "trade": "123 Transaction",
+    "preferences": "123 Preferences",
+    "docs": "123 Docs",
+    "support": "123 Support"
+  },
+  "language": {
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ru-RU": "Русский",
+    "uk-UA": "Українська"
+  }
+}

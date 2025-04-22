@@ -1,0 +1,21 @@
+{
+  "metadata": {
+    "title": "FairX | 완전히 신뢰할 수 없는 자동화된 DeFi 트레이딩",
+    "desc": "FairX | 완전히 신뢰할 수 없는 자동화된 DeFi 트레이딩"
+  },
+  "title": "FairX",
+  "desc": "FairX | 완전히 신뢰할 수 없는 자동화된 DeFi 트레이딩",
+  "btn": {
+    "enter": "구독하기",
+    "download": "로그 다운로드",
+    "entering": "구독 중"
+  },
+  "banner": {
+    "title": "완전히 신뢰할 수 없는 자동화된 DeFi 트레이딩",
+    "titleHighlight": "트레이딩",
+    "desc": "출시 예정입니다. 계속 지켜봐 주세요!",
+    "email": "출시 소식을 받을 이메일 입력",
+    "subscribesuccess": "구독 성공",
+    "subscribeerror": "구독 실패"
+  }
+}
