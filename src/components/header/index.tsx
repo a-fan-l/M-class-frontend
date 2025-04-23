@@ -7,8 +7,6 @@ import useLang, { LanguageData } from '@/hooks/system/useLanguage';
 import { useRouter } from '@i18n/navigation';
 import '@styles/base.css';
 
-// import './styles.scss';
-
 interface IIndexProps
   extends Partial<Pick<HeaderProps, 'isLogo' | 'isMode' | 'isLang' | 'name'>> {}
 

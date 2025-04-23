@@ -6,8 +6,7 @@ export const useWrap = () => {
     const [isMax, { toggle: toggleIsMax, set: setIsMax }] = useToggle(false)
     const [ydBalance, setYdBalance] = useAtom(ydBalanceState)
     const [usdtBalance, setUsdtBalance] = useAtom(usdtBalanceState)
-    // const {isConnected} = useWalletInfo()
-    
+
     return {
         isMax,
         toggleIsMax,

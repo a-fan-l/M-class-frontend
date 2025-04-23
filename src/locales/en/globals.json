@@ -10,5 +10,9 @@
         "course": "Course",
         "home": "Home",
         "account": "Account"
+    },
+    "btn": {
+        "sign": "Sign",
+        "connect": "Connect"
     }
 }

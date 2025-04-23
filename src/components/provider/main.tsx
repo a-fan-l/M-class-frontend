@@ -13,9 +13,9 @@ export interface ProviderProps extends Omit<IntlProviderProps, 'children'> {
 const Index: React.FC<ProviderProps> = ({ children, locale, messages }) => {
   return (
     <IntlProvider locale={locale} messages={messages}>
-      <StoreProvider>
-        <ThemeProvider>{children}</ThemeProvider>
-      </StoreProvider>
+        <StoreProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </StoreProvider>
     </IntlProvider>
   );
 };
@@ -26,7 +26,7 @@ export type ProviderType = typeof Index & {
   intl: typeof IntlProvider;
   store: typeof StoreProvider;
   theme: typeof ThemeProvider;
-};
+}
 
 export const Provider = Index as ProviderType;
 Provider.intl = IntlProvider;

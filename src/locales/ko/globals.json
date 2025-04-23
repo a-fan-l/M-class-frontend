@@ -10,5 +10,9 @@
     "course": "코스",
     "home": "홈",
     "account": "계정"
+  },
+  "btn": {
+    "sign": "서명",
+    "connect": "연결"
   }
 }

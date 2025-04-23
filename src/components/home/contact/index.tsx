@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { cn } from '@utils/system/index';
+import { cn } from '@utils/index';
 
 import './style.css';
 

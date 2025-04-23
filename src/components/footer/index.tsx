@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-import { cn } from '@utils/system/index';
+import { cn } from '@utils/shadcn';
 
 interface FooterProps extends React.HTMLAttributes<HTMLElement> {}
 export function Footer({ className, ...props }: FooterProps) {

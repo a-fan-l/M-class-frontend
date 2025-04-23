@@ -1,5 +1,5 @@
 
-import { cn } from '@utils/system/index';
+import { cn } from '@utils/index';
 
 import { CourseList } from './list';
 

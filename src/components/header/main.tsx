@@ -6,13 +6,14 @@ import Header, { IIndexProps as HeaderRootProps } from './root';
 // import Logo, { IIndexProps as LogoProps } from './logo';
 import Tools, { HeaderToolsProps } from './tools';
 import Menu from './menu';
+import Sign from './sign';
 
-// 方式1: 使用Omit排除不需要的属性
 export interface HeaderProps extends Omit<HeaderRootProps, 'children'>, HeaderToolsProps {
   isLogo?: boolean;
 //   logo?: LogoProps;
   isMenu?: boolean;
   name?: string;
+  isSign?: boolean;
 }
 
 const Index: React.FC<HeaderProps> = ({
@@ -23,6 +24,7 @@ const Index: React.FC<HeaderProps> = ({
   langProps,
   name,
   children,
+  isSign
 }) => {
   return (
     <Header name={name}>
