@@ -6,6 +6,7 @@ import Dlanguage from '@public/static/language/language.svg';
 import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover';
 
 import Nav, { IIndexProps as NavProps } from './nav';
+import './style.css';
 
 export interface LanguageProps extends NavProps {
   open?: boolean;

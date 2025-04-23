@@ -5,6 +5,8 @@ import * as React from 'react';
 import { LanguageData } from '@/atoms/system/language';
 import { useMode } from '@/hooks/system/useMode';
 
+import './style.css';
+
 export interface IIndexProps {
   data: LanguageData[];
   current?: LanguageData;
