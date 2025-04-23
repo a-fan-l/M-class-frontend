@@ -6,6 +6,8 @@ export interface IIndexProps {
 }
 
 const Index: React.FC<IIndexProps> = ({ children, name = 'primary' }) => (
-  <header className={`header-root flex min-h-12 w-full items-center ${name}`}>{children}</header>
+  <header className={`header-root fixed top-0 left-0 flex min-h-12 w-full items-center z-[9999] ${name}`}>
+    {children}
+  </header>
 );
 export default Index;

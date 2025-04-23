@@ -4,5 +4,10 @@
         "ko-KR": "한국어",
         "ru-RU": "Русский",
         "uk-UA": "Українська"
+    },
+    "menu": {
+        "wrap": "Wrap",
+        "course": "Course",
+        "home": "Home"
     }
 }

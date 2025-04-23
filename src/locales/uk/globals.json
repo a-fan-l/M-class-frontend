@@ -1,9 +1,14 @@
 {
-    "language": {
-      "en-US": "English",
-      "ko-KR": "한국어",
-      "ru-RU": "Русский",
-      "uk-UA": "Українська"
-    }
+  "language": {
+    "en-US": "English",
+    "ko-KR": "한국어",
+    "ru-RU": "Русский",
+    "uk-UA": "Українська"
+  },
+  "menu": {
+    "wrap": "Обгортка",
+    "course": "Курс",
+    "home": "Дім"
   }
+}
   

@@ -13,7 +13,8 @@
   --background: oklch(1 0 0);
   --foreground: #171717;
 
-  --primary: rgba(0, 249, 158, 1);
+  --primary: #A3FF12;
+  /* --primary: rgba(0, 249, 158, 1); */
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -32,6 +33,37 @@
 
   --header-primary: #f4f6fa;
   --footer-primary: rgba(47, 47, 50, 1);
+
+  --section-background: rgba(30, 31, 53, 0.8);
+  --section-title: #fff;
+  --section-desc: rgba(255, 255, 255, 0.7);
+  --section-tag: #A3FF12;
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: #ededed;
+  --primary: #A3FF12;
+  --primary-foreground: rgba(255, 255, 255, 1);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: rgba(244, 246, 250, 1);
+  --third-foreground: rgba(244, 246, 250, 0.8);
+  --desc-foreground: rgba(244, 246, 250, 0.8);
+  --popover-primary: rgba(67, 67, 67, 1);
+  --popover-foreground: oklch(0.985 0 0);
+  --blocks-primary: rgba(17, 19, 32, 1);
+  --blocks-secondary: rgba(41, 43, 54, 1);
+  --blocks-third: rgba(244, 246, 250, 1);
+  --blocks-special: rgba(244, 246, 250, 1);
+  --blocks-neutral: rgba(17, 19, 32, 1);
+  --blocks-content: linear-gradient(0deg, #000101 0%, #000101 100%), var(rgba(24, 24, 27, 1), #18181b);
+  --header-primary: rgba(255, 255, 255, 0.15);
+  --footer-primary: rgba(47, 47, 50, 1);
+
+  --section-background: #fff;
+  --section-title: #f6f7ff;
+  --section-desc: #a9a9bd;
+  --section-tag: #A3FF12;
 }
 
 @theme {
@@ -59,32 +91,6 @@
   --color-header-primary: var(--header-primary);
   --color-content-background: var(--blocks-content);
   --color-footer-primary: var(--footer-primary);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: #ededed;
-
-  --primary: rgba(0, 249, 158, 1);
-  --primary-foreground: rgba(255, 255, 255, 1);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: rgba(244, 246, 250, 1);
-  --third-foreground: rgba(244, 246, 250, 0.8);
-  --desc-foreground: rgba(244, 246, 250, 0.8);
-
-  --popover-primary: rgba(67, 67, 67, 1);
-  --popover-foreground: oklch(0.985 0 0);
-
-  --blocks-primary: rgba(17, 19, 32, 1);
-  --blocks-secondary: rgba(41, 43, 54, 1);
-  --blocks-third: rgba(244, 246, 250, 1);
-  --blocks-special: rgba(244, 246, 250, 1);
-  --blocks-neutral: rgba(17, 19, 32, 1);
-  --blocks-content:
-    linear-gradient(0deg, #000101 0%, #000101 100%), var(rgba(24, 24, 27, 1), #18181b);
-
-  --header-primary: rgba(255, 255, 255, 0.15);
-  --footer-primary: rgba(47, 47, 50, 1);
 }
 
 body {

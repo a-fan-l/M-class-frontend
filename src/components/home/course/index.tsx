@@ -1,12 +1,11 @@
-'use client';
+'use client'
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { cn } from '@utils/system/index';
-
-import './style.css'
+import './style.css';
+import Item from './item';
 
 const courseList = [
   {
@@ -14,7 +13,7 @@ const courseList = [
     title: 'Aora',
     category: 'Development',
     year: '2024',
-    image: '/static/image.png',
+    image: '/static/home/course.png',
     bgColor: '#8c8472',
   },
   {
@@ -22,7 +21,7 @@ const courseList = [
     title: 'Code Screenshot',
     category: 'Development & Design',
     year: '2024',
-    image: '/static/image.png',
+    image: '/static/home/course.png',
     bgColor: '#f8d7ea',
   },
   {
@@ -30,7 +29,7 @@ const courseList = [
     title: 'Code Screenshot',
     category: 'Development & Design',
     year: '2024',
-    image: '/static/image.png',
+    image: '/static/home/course.png',
     bgColor: '#fff',
   },
   {
@@ -38,16 +37,16 @@ const courseList = [
     title: 'Code Screenshot',
     category: 'Development & Design',
     year: '2024',
-    image: '/static/image.png',
+    image: '/static/home/course.png',
     bgColor: 'rgba(187 247 208)',
   }
 ];
 
-export interface CourseProps {}
-const Course: React.FC<CourseProps> = () => {
+const CourseSection = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const t = useTranslations('home');
-
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
+  
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -55,14 +54,21 @@ const Course: React.FC<CourseProps> = () => {
           if (entry.isIntersecting) {
             const children = entry.target.children;
             Array.from(children).forEach((child, index) => {
-              setTimeout(() => {
-                child.classList.add('opacity-100', 'translate-y-0');
-              }, index * 100);
+              requestAnimationFrame(() => {
+                const element = child as HTMLElement;
+                element.classList.add('slide-from-left', 'slide-from-right');
+                requestAnimationFrame(() => {
+                  element.style.animationDelay = `${index * 0.1}s`;
+                });
+              });
             });
           }
         });
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.1,
+        rootMargin: '100px'
+      }
     );
 
     if (containerRef.current) {
@@ -77,44 +83,33 @@ const Course: React.FC<CourseProps> = () => {
   }, []);
 
   return (
-    <div className="w-full py-20">
-      <div className="container max-w-7xl mx-auto px-4">
-        <div className="flex flex-col items-center justify-center mb-12">
-          <h3 className="text-3xl font-bold text-center mb-4">
-            {t('course.title')}
-          </h3>
-          <p className="text-center text-muted-foreground">
-            {t('course.description')}
-          </p>
-        </div>
-        <div ref={containerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {courseList.map((course) => (
-            <Card
-              key={course.id}
-              className={cn(
-                "opacity-0 translate-y-4 transition-all duration-500",
-                "hover:shadow-lg hover:scale-105"
-              )}
-              style={{ backgroundColor: course.bgColor }}
-            >
-              <CardHeader className="p-0">
-                <img 
-                  src={course.image} 
-                  alt={course.title} 
-                  className="w-full h-48 object-cover rounded-t-lg"
-                />
-              </CardHeader>
-              <CardContent className="p-4">
-                <h4 className="text-lg font-semibold">{course.title}</h4>
-                <p className="text-sm text-muted-foreground">{course.category}</p>
-                <p className="text-xs text-muted-foreground">{course.year}</p>
-              </CardContent>
-            </Card>
+    <div className='w-full py-6 md:mt-30 md:mb-30'>
+      <div className="container mx-auto px-4">
+        <h1 className='mb-2 font-bold text-4xl text-[var(--section-title)]'>
+          {t('course.title')}
+        </h1>
+
+        <h2 className='text-[var(--section-desc)] mb-10 text-xl'>
+          {t('course.description')}
+        </h2>
+        <div 
+          ref={containerRef}
+          className='pb-20 opacity-container grid row-gap-10 grid-cols-2 grid-rows-[masonry] gap-y-10 py-md sm:gap-x-16 sm:gap-y-0'
+        >
+          {courseList.map((item, index) => (
+            <Item 
+              {...item} 
+              index={index}
+              key={item.id}
+            />
           ))}
+        </div>
+        <div className='flex justify-center'>
+          <Link href="/course" className='cursor-pointer rounded-full text-secondary/80 px-5 py-3 bg-primary/10 hover:bg-primary/20 transition-colors duration-300 hover:text-secondary'>View All Course</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Course;
+export default CourseSection;

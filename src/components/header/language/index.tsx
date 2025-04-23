@@ -15,7 +15,8 @@ export interface LanguageProps extends NavProps {
 const Index: React.FC<LanguageProps> = ({ open, toggle, ...props }) => {
   const { mode } = useMode();
 
-  const ontoggle = () => {
+  const ontoggle = (e: React.MouseEvent) => {
+    e.stopPropagation();
     toggle && toggle(!open);
   };
 
@@ -32,10 +33,12 @@ const Index: React.FC<LanguageProps> = ({ open, toggle, ...props }) => {
 
   return (
     <Popover open={open}>
-      <PopoverTrigger onClick={ontoggle} className="cursor-pointer p-0">
-        {Logo && <Logo />}
+      <PopoverTrigger asChild onClick={ontoggle} className="cursor-pointer p-0">
+        <button className="tools-btn h-full w-full">
+          {Logo && <Logo />}
+        </button>
       </PopoverTrigger>
-      <PopoverContent onPointerDownOutside={close} className="tools-items-popover popover-language">
+      <PopoverContent onPointerDownOutside={close} className="tools-items-popover popover-language z-[9999]">
         <Nav {...props} />
       </PopoverContent>
     </Popover>

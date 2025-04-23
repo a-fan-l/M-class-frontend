@@ -21,14 +21,14 @@ const Index: React.FC<HeaderToolsProps> = ({
   modeProps,
 }) => {
   return (
-    <div className="tools-root flex min-h-8 items-center max-md:flex-1">
+    <div className="tools-root flex items-center max-md:flex-1 relative z-[9999]">
       {isMode && (
-        <div className="tools-items">
+        <div className="tools-items z-[9999]">
           <Mode {...modeProps} />
         </div>
       )}
       {isLang && langProps && (
-        <div className="tools-items flex items-center">
+        <div className="tools-items z-[9999] flex items-center">
           <Language {...langProps} />
         </div>
       )}

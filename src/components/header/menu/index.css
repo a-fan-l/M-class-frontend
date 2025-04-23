@@ -15,6 +15,20 @@
   height: 2em;
   display: block;
   overflow: hidden;
+  padding-left: 16px;  /* 为小圆点留出空间 */
+}
+
+/* 添加小圆点样式 */
+.menu-item.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary); 
+  border-radius: 50%;
 }
 
 .menu-text {
@@ -37,7 +51,7 @@
 }
 
 .menu-text-inner:last-child {
-  color: #1890ff;
+  color: var(--primary); 
 }
 
 .menu-item:hover .menu-text {

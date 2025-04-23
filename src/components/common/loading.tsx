@@ -1,12 +1,9 @@
 "use client"
 
 import { motion, Variants } from "motion/react"
-
 import "./style.css"
-interface LoadingThreeDotsJumpingProps {
-    text: string
-}
-const LoadingThreeDotsJumping: React.FC<LoadingThreeDotsJumpingProps> = ({ text }) => {
+export interface LoadingProps {}
+const Loading: React.FC<LoadingProps> = () => {
     const dotVariants: Variants = {
         jump: {
             y: -30,
@@ -23,15 +20,13 @@ const LoadingThreeDotsJumping: React.FC<LoadingThreeDotsJumpingProps> = ({ text 
         <motion.div
             animate="jump"
             transition={{ staggerChildren: -0.2, staggerDirection: -1 }}
-            className="container"
+            className="loading-container"
         >
-            {text && text.split('').map((char, index) => (
-                <motion.div key={index} variants={dotVariants}>
-                    {char}
-                </motion.div>
-            ))}
+            <motion.div className="item" variants={dotVariants} />
+            <motion.div className="item" variants={dotVariants} />
+            <motion.div className="item" variants={dotVariants} />
         </motion.div>
     )
 }
 
-export default LoadingThreeDotsJumping
+export default Loading

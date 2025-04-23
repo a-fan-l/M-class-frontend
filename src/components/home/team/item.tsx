@@ -26,21 +26,21 @@ const ItemCard: React.FC<ItemCardProps> = ({
   return (
     <Card className={cn(
       "relative overflow-hidden transition-all duration-300 hover:scale-105",
-      "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
-      "border border-border/50"
+      "bg-[var(--section-background)]",
+      "border-none"
     )}>
       <CardContent className="flex flex-col items-center p-6">
         {/* 头像 */}
         <img
-          src={avatar}
-          alt={name}
-          className="w-24 h-24 rounded-full mb-4 object-cover"
+          // src={avatar}
+          // alt={name}
+          className="w-24 h-24 rounded-full mb-4 object-cover text-[var(--section-title)]"
         />
         {/* 姓名 */}
-        <h4 className="font-bold text-lg mb-2">
+        <h4 className="font-bold text-lg mb-2 text-[var(--section-title)]">
           {name}
         </h4>
-        <p className="text-muted-foreground mb-4">
+        <p className="mb-4 text-[var(--section-desc)]">
           {role}
         </p>
         {/* 社交媒体图标 */}
@@ -49,7 +49,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-[var(--section-desc)]"
               asChild
             >
               <a href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
@@ -61,7 +61,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-[var(--section-desc)]"
               asChild
             >
               <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
@@ -73,7 +73,7 @@ const ItemCard: React.FC<ItemCardProps> = ({
             <Button
               variant="ghost"
               size="icon"
-              className="text-muted-foreground hover:text-foreground"
+              className="text-[var(--section-desc)]"
               asChild
             >
               <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">

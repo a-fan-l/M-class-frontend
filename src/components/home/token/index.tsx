@@ -1,6 +1,4 @@
-
 import MetricsGrid from "./list";
-
 
 const metrics = [
   { label: "Market Cap", value: 490.88, symbol: "M" },
@@ -12,8 +10,8 @@ const metrics = [
 interface TokenInfoProps {}
 const TokenInfo = ({}: TokenInfoProps) => {
   return (
-    <div className='opacity-500 w-full bg-transparent'>
-      <div className="flex items-center justify-center">
+    <div className='w-full p-4 rounded-lg bg-[var(--section-background)]'>
+      <div className="flex items-center justify-center container mx-auto">
         {/* <span className="absolute left-0 top-0 w-[500px] h-[4px] bg-gradient-to-r from-[rgba(248,37,82,0.5)] to-transparent"></span> */}
         {/* <span className="absolute right-0 bottom-0 rotate-180 w-[500px] h-[4px] bg-gradient-to-r from-[rgba(163,255,18,0.5)] to-[rgba(21,22,37,0)]"></span> */}
         <MetricsGrid metrics={metrics} />

@@ -5,10 +5,6 @@
   },
   "title": "M 클래스",
   "desc": "M 클래스 DeFi 거래, 완전히 신뢰 없는",
-  "course": {
-    "title": "우리 강의",
-    "description": "학습 목표를 달성하기 위해 설계된 다양한 강의를 탐색하세요"
-  },
   "team": {
     "title": "우리 팀",
     "description": "우리 강의와 프로젝트를 뒷받침하는 팀을 만나세요"
@@ -16,5 +12,9 @@
   "banner": {
     "title": "학생의 학습 여정을 부스트하세요",
     "description": "다음 세대 게임 생태계를 위한 IGO 및 NFT 시장 보안 암호 솔루션을 위한 블록체인 기술"
+  },
+  "course": {
+    "title": "인기 강의",
+    "description": "좋아하는 강의를 구매하세요."
   }
 }

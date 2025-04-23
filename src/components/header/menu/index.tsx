@@ -1,27 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useTranslations } from 'next-intl';
+
+import { desktopRouter } from '@config/router';
+
 import './index.css';
 
-interface MenuItem {
-  key: string;
-  label: string;
-  path: string;
-}
+interface MenuProps {}
+const Menu: React.FC<MenuProps> = () => {
+  const pathname = usePathname();
+  const t = useTranslations('globals');
 
-const menuItems: MenuItem[] = [
-  { key: 'home', label: 'Home', path: '/' },
-  { key: 'course', label: 'Course', path: '/course' },
-  { key: 'wrap', label: 'Wrap', path: '/wrap' },
-];
-
-const Menu: React.FC = () => {
   return (
     <nav className="menu">
-      {menuItems.map((item) => (
-        <Link key={item.key} href={item.path} className="menu-item">
+      {desktopRouter.map((item) => (
+        <Link 
+          key={item.id} 
+          href={item.href ?? '/'} 
+          className={`menu-item ${pathname === item.href ? 'active' : ''}`}
+        >
           <span className="menu-text">
-            <span className="menu-text-inner">{item.label}</span>
-            <span className="menu-text-inner">{item.label}</span>
+            <span className="menu-text-inner">{t(item.title)}</span>
+            <span className="menu-text-inner">{t(item.title)}</span>
           </span>
         </Link>
       ))}

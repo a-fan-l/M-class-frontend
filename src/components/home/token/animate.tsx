@@ -17,8 +17,8 @@ const NumberAnimate: React.FC<INumberAnimateProps> = ({ value = 0, symbol = "" }
         return () => controls.stop()
     }, [])
 
-    return <h4 className="text-[#A3FF12] font-bold text-xl flex items-center">
-        <motion.pre style={{fontSize: 64, color: "#8df0cc", display: "inline"}}>{rounded}</motion.pre>
+    return <h4 className="font-bold text-xl flex items-center">
+        <motion.pre style={{fontSize: 64, display: "inline"}} className="text-[var(--section-tag)]">{rounded}</motion.pre>
         <span className="text-gray-400 ml-2">{symbol}</span>
     </h4>
 }

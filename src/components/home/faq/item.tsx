@@ -9,23 +9,26 @@ import {
 interface FAQItemProps {
   question: string;
   answer: string;
+  id: number;
 }
 
-const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
+const FAQItem: React.FC<FAQItemProps> = React.memo(({ question, answer, id }) => {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1" className="border-none">
-        <AccordionTrigger className="text-white hover:no-underline">
-          <p className="text-white font-semibold text-lg">
+      <AccordionItem value={`item-${id}`} className="border-none">
+        <AccordionTrigger className="hover:no-underline">
+          <h1 className="text-[var(--section-title)] text-xl">
             {question}
-          </p>
+          </h1>
         </AccordionTrigger>
         <AccordionContent>
-          <p className="text-gray-300 mb-4 text-md">{answer}</p>
+          <p className="mb-4 text-lg text-[var(--section-desc)]">{answer}</p>
         </AccordionContent>
       </AccordionItem>
     </Accordion>
   );
-};
+});
+
+FAQItem.displayName = 'FAQItem';
 
 export default FAQItem;

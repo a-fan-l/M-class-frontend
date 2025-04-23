@@ -17,7 +17,8 @@ const Index: React.FC<IIndexProps> = ({ onChange, className }) => {
   const { mode, change, setup } = useMode();
   const { setTheme } = useTheme();
 
-  const click = async () => {
+  const click = async (e: React.MouseEvent) => {
+    e.stopPropagation();
     const res = mode === 'dark' ? 'light' : 'dark';
     change(res);
     setTheme(res);
@@ -29,9 +30,9 @@ const Index: React.FC<IIndexProps> = ({ onChange, className }) => {
   }, []);
 
   return (
-    <div className={`tools-btn mode h-full w-full cursor-pointer ${className}`} onClick={click}>
+    <button className={`tools-btn mode h-full w-full cursor-pointer ${className}`} onClick={click}>
       {mode === 'dark' ? <Sun /> : <Moon />}
-    </div>
+    </button>
   );
 };
 
