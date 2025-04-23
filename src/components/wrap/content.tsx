@@ -6,25 +6,23 @@ import { Card } from "@/components/ui/card";
 
 import TokenInput from "./input";
 
-const TokenSwap: React.FC = () => {
+interface TokenSwapProps {
+}
+const TokenSwap: React.FC<TokenSwapProps> = ({ }) => {
   const [amount, setAmount] = useState("0.111");
   const [isSwapped, setIsSwapped] = useState(false);
 
-  // Token balances (mock data)
-  const xzkBalance = "15.6675311530998988";
-  const vxzkBalance = "4.332419825800102";
+  const ydBalance = "15.6675311530998988";
+  const usdtBalance = "4.332419825800102";
 
-  // Handle input change
   const handleAmountChange = (value: string) => {
     setAmount(value);
   };
 
-  // Handle Max button click
   const handleMaxClick = () => {
-    setAmount(isSwapped ? vxzkBalance : xzkBalance);
+    setAmount(isSwapped ? ydBalance : usdtBalance);
   };
 
-  // Handle swap button click
   const handleSwap = () => {
     setIsSwapped(!isSwapped);
   };
@@ -38,15 +36,15 @@ const TokenSwap: React.FC = () => {
     <Card className="flex flex-col gap-8 border-none">
       <div className="flex flex-col gap-5 relative">
         <TokenInput
-          tokenSymbol={isSwapped ? "USDT" : "YD"}
-          balance={isSwapped ? vxzkBalance : xzkBalance}
+          tokenSymbol={isSwapped ? "YD" : "USDT"}
+          balance={isSwapped ? ydBalance : usdtBalance}
           value={amount}
           onChange={handleAmountChange}
           onMaxClick={handleMaxClick}
           showSplit={true}
         />
 
-        <div className="bg-[#A3FF12] rounded-full w-8 h-8 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <div className="bg-primary rounded-full w-8 h-8 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
           <Button
             variant="ghost"
             onClick={handleSwap}
@@ -57,8 +55,8 @@ const TokenSwap: React.FC = () => {
         </div>
 
         <TokenInput
-          tokenSymbol={isSwapped ? "YD" : "USDT"}
-          balance={isSwapped ? xzkBalance : vxzkBalance}
+          tokenSymbol={isSwapped ? "USDT" : "YD"}
+          balance={isSwapped ? usdtBalance : ydBalance}
           value={amount}
           onChange={() => {}}
           disabled
@@ -67,10 +65,9 @@ const TokenSwap: React.FC = () => {
         />
       </div>
       <Button
-        // onClick={handleWrap}
-        className="w-full h-13 rounded-lg py-3 bg-[#A3FF12] hover:bg-[#A3FF12]/90"
+        className="w-full h-13 rounded-lg py-3 bg-primary/80 hover:bg-primary"
       >
-        <span className='font-bold text-black text-lg'>Wrap</span>
+        <span className='text-black/80 text-lg cursor-pointer '>Wrap</span>
       </Button>
     </Card>
   );

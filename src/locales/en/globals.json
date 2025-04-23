@@ -8,6 +8,7 @@
     "menu": {
         "wrap": "Wrap",
         "course": "Course",
-        "home": "Home"
+        "home": "Home",
+        "account": "Account"
     }
 }

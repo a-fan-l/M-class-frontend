@@ -3,15 +3,20 @@ import React from "react";
 import Info from "./info";
 import PathDrawing from "./test";
 import PathMorphing from "./test2";
+import Wrap from "./wrap";
 
 const Banner: React.FC = () => {
   return (
-    <div className="w-full md:mb-45 md:mt-45 container mx-auto">
-      <div className="container">
+    <div className="w-full md:mb-30 md:mt-30 container mx-auto">
+      <div className="banner-container">
         <div className="relative w-full">
-          <div className="flex flex-row items-center justify-between">
-              <Info/>
-              {/* <PathDrawing /> */}
+          <div className="flex flex-row justify-between gap-10">
+              <div className="w-1/2 justify-start">
+                <Info/>
+              </div>
+              <div className="w-1/2 flex justify-center">
+                <Wrap />
+              </div>
           </div>
         </div>
       </div>

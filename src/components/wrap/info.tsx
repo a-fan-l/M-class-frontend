@@ -18,13 +18,13 @@ const ExchangeInfo: React.FC<ExchangeInfoProps> = ({ showCopy=true, onCopy, exch
   }, [onCopy]);
 
   return (
-    <Card className="text-gray-400 text-sm p-6">
-      <div className="flex justify-between mb-2">
-        <span>Exchange Rate</span>
+    <div className="text-[var(--section-desc)] text-md pb-2">
+      <div className="flex justify-between pb-1">
+        <span className='font-normal'>Exchange Rate</span>
         <span>{exchangeRate}</span>
       </div>
-      <div className="flex justify-between mb-2">
-        <span>XZK Contract</span>
+      <div className="flex justify-between pb-1">
+        <span className='font-normal'>Contract Address</span>
         <div className="flex items-center space-x-1">
           <span>{ydContract}</span>
           {showCopy && (
@@ -35,7 +35,7 @@ const ExchangeInfo: React.FC<ExchangeInfoProps> = ({ showCopy=true, onCopy, exch
           )}
         </div>
       </div>
-    </Card>
+    </div>
   );
 };
 

@@ -27,42 +27,41 @@ const TokenInput: React.FC<TokenInputProps> = ({
   showSplit = true,
 }) => {
   return (
-    <Card className="flex flex-col p-4">
-      {/* Input and Token Symbol */}
+    <Card className="flex flex-col p-4 border-white/40 border-1">
       <div className="flex items-center justify-between">
         <Input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
-          className={`h-16 pr-2 text-4xl placeholder:text-white placeholder:text-5xl bg-transparent w-full border-none focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-none ${
-            disabled ? "text-gray-400" : "text-white"
+          className={`h-16 pr-2 text-5xl placeholder:text-white placeholder:text-5xl bg-transparent w-full border-none focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-none ${
+            disabled ? "text-gray-400" : "text-[var(--section-title)]"
           }`}
           placeholder="0.0"
         />
         <div className="flex flex-row items-center justify-end min-w-[75px]">
           {!disabled && (
             <Button
-              variant="outline"
+              variant="link"
               onClick={onMaxClick}
-              className="h-10 text-[#A3FF12] text-xs bg-gray-700 rounded-lg mr-1"
+              className="h-10 text-primary text-md rounded-lg pr-2 pl-1"
             >
               Max
             </Button>
           )}
-          {showSplit && <div className="w-[0.5px] h-5 bg-gray-500"></div>}
-          <h6 className="text-white text-md ml-1">
+          {showSplit && <div className="w-[1px] h-5 bg-white"></div>}
+          <h6 className="text-[var(--section-desc)] text-xl ml-1">
             {tokenSymbol}
           </h6>
         </div>
       </div>
 
       {/* Balance and Max Button */}
-      <div className="flex flex-row justify-end">
-        <p className="text-white mr-2 balance-text">
+      <div className="flex flex-row justify-end items-center">
+        <p className="text-[var(--section-desc)] pr-2 text-md font-normal">
           Balance: {balance}
         </p>
-        <RefreshCw className="h-4 w-4 text-[#A3FF12] cursor-pointer" />
+        <RefreshCw className="h-4 w-4 text-primary cursor-pointer" />
       </div>
     </Card>
   );
