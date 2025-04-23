@@ -12,6 +12,7 @@ const courseList = [
     id: 1,
     title: 'Aora',
     category: 'Development',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
     year: '2024',
     image: '/static/home/course.png',
     bgColor: '#8c8472',
@@ -19,6 +20,7 @@ const courseList = [
   {
     id: 2,
     title: 'Code Screenshot',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
     category: 'Development & Design',
     year: '2024',
     image: '/static/home/course.png',
@@ -27,6 +29,7 @@ const courseList = [
   {
     id: 3,
     title: 'Code Screenshot',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
     category: 'Development & Design',
     year: '2024',
     image: '/static/home/course.png',
@@ -35,6 +38,7 @@ const courseList = [
   {
     id: 4,
     title: 'Code Screenshot',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
     category: 'Development & Design',
     year: '2024',
     image: '/static/home/course.png',
@@ -83,7 +87,7 @@ const CourseSection = () => {
   }, []);
 
   return (
-    <div className='w-full py-6 md:mt-30 md:mb-30'>
+    <div className='w-full py-6 md:mb-30'>
       <div className="container mx-auto px-4">
         <h1 className='mb-2 font-bold text-4xl text-[var(--section-title)]'>
           {t('course.title')}
@@ -94,14 +98,12 @@ const CourseSection = () => {
         </h2>
         <div 
           ref={containerRef}
-          className='pb-20 opacity-container grid row-gap-10 grid-cols-2 grid-rows-[masonry] gap-y-10 py-md sm:gap-x-16 sm:gap-y-0'
+          className='pb-20 gap-10 opacity-container grid row-gap-10 grid-cols-2 grid-rows-[masonry] gap-y-20 py-md sm:gap-x-16 sm:gap-y-0'
         >
-          {courseList.map((item, index) => (
-            <Item 
-              {...item} 
-              index={index}
-              key={item.id}
-            />
+          {courseList.map((item) => (
+            <div className='opacity-container-child' key={item.id}>
+              <Item {...item} />
+            </div>
           ))}
         </div>
         <div className='flex justify-center'>

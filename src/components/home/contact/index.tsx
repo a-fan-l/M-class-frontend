@@ -1,4 +1,6 @@
 import React from "react";
+import { useTranslations } from 'next-intl';
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { cn } from '@utils/system/index';
@@ -6,31 +8,29 @@ import { cn } from '@utils/system/index';
 import './style.css';
 
 const Email = () => {
+    const t = useTranslations('home');
     return (
-        <div className='w-full md:mt-10 md:mb-30'>
-            <div className='container max-w-3xl mx-auto px-4'>
+        <div className='w-full md:mb-30'>
+            <div className='container mx-auto'>
                 <div className={cn(
                     "relative p-8 rounded-lg",
-                    "bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+                    "bg-section-background/95 backdrop-blur supports-[backdrop-filter]:bg-section-background/60",
                     "email-area text-center active-shape hover-shape-inner"
                 )}>
-                    <h2 className="text-xl font-bold mb-8">
-                        Get alerts 💌 for new IGOs & IDOs
+                    <h2 className="text-3xl font-bold pb-6 text-[var(--section-title)]">
+                        {t('contact.title')}
                     </h2>
-                    <div className="text-muted-foreground mb-10 md:mb-8">
-                        Sign up for newsletter to get more IGO/IDO News and Updates
+                    <div className="pb-20 pd:mb-8 text-xl text-[var(--section-desc)]">
+                        {t('contact.description')}
                     </div>
-                    <div className="flex items-center justify-center gap-2">
+                    <div className="max-w-2xl mx-auto flex flex-row gap-4">
                         <Input 
                             type="email" 
                             placeholder="Enter your email"  
-                            className="md:w-[400px] md:h-11 fadeInUp" 
+                            className="w-full h-13 text-[var(--section-desc)] text-xl"
                         />
-                        <Button className="relative md:h-11 bg-[#A3FF12] hover:bg-[#8FE610] text-black font-bold">
-                            Contact
-                            <span className="hover-shape1"></span>
-                            <span className="hover-shape2"></span>
-                            <span className="hover-shape3"></span>
+                        <Button className="bg-primary/30 hover:bg-primary/50 cursor-pointer h-13 px-6">
+                            <span className="text-xl">Contact</span>
                         </Button>
                     </div>
                     <span className="border-shadow shadow-1"></span>

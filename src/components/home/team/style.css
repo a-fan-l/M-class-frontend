@@ -1,30 +1,18 @@
 .team-item {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    margin-bottom: 30px;
-    padding: 35px 0 30px 0;
-    transition: 1.4s;
-    cursor: pointer;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--section-background);
+  transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform, background-image;
+  border-radius: 10px;
+}
   
-  .team-item:hover {
-    background-image: radial-gradient(circle, rgba(137, 120, 211, 0.4) 0%, #1E1F35 100%);
-  }
-  
-  .team-item .border-shadow {
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.4s;
-  }
-  
-  .team-item:hover .border-shadow {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .team-item .team-icon-list .social-icon {
-    color: rgba(255, 255, 255, 0.5);
-    transition: 0.4s;
-  }
-  
-  
+.team-item:hover {
+  opacity: 0.9;
+  transform: translateY(-20px);
+  box-shadow: 0 4px 6px var(--section-background);
+  background-image: radial-gradient(circle, rgba(137, 120, 211, 0.4) 0%, #1E1F35 100%);
+}

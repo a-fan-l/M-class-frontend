@@ -7,13 +7,12 @@ const Team = () => {
   const t = useTranslations('home');
 
   return (
-    <div className="w-full md:mb-30 md:mt-30">
+    <div className="w-full md:mb-30">
       <div className="container max-w-7xl mx-auto px-4">
-        <div className="mb-10">
+        <div className="pb-16">
           <h1 className='mb-2 font-bold text-4xl text-[var(--section-title)] text-center'>
             {t('team.title')}
           </h1>
-
           <h2 className='text-[var(--section-desc)] mb-10 text-xl text-center'>
             {t('team.description')}
           </h2>

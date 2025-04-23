@@ -41,15 +41,9 @@ const teamList = [
 
 const TeamList = () => {
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-8">
       {teamList.map((item, index) => (
-        <ItemCard
-          key={index}
-          name={item.name}
-          role={item.role}
-          avatar={item.avatar}
-          socialLinks={item.socialLinks}
-        />
+        <ItemCard {...item} key={index} />
       ))}
     </div>
   );

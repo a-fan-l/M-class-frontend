@@ -15,7 +15,7 @@ interface FAQItemProps {
 const FAQItem: React.FC<FAQItemProps> = React.memo(({ question, answer, id }) => {
   return (
     <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value={`item-${id}`} className="border-none">
+      <AccordionItem value={`item-${id}`}>
         <AccordionTrigger className="hover:no-underline">
           <h1 className="text-[var(--section-title)] text-xl">
             {question}

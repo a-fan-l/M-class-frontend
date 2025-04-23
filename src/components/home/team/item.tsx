@@ -1,11 +1,8 @@
 import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { cn } from '@utils/system/index';
 import { Linkedin, Twitter, Instagram } from "lucide-react";
 
-import './style.css';
-
+import './style.css'; 
 interface ItemCardProps {
   name: string;
   role?: string;
@@ -24,27 +21,20 @@ const ItemCard: React.FC<ItemCardProps> = ({
   socialLinks,
 }) => {
   return (
-    <Card className={cn(
-      "relative overflow-hidden transition-all duration-300 hover:scale-105",
-      "bg-[var(--section-background)]",
-      "border-none"
-    )}>
-      <CardContent className="flex flex-col items-center p-6">
-        {/* 头像 */}
+    <div className="team-item">
+      <div className="flex flex-col items-center py-10 px-6">
         <img
           // src={avatar}
           // alt={name}
           className="w-24 h-24 rounded-full mb-4 object-cover text-[var(--section-title)]"
         />
-        {/* 姓名 */}
         <h4 className="font-bold text-lg mb-2 text-[var(--section-title)]">
           {name}
         </h4>
         <p className="mb-4 text-[var(--section-desc)]">
           {role}
         </p>
-        {/* 社交媒体图标 */}
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 pb-4">
           {socialLinks.linkedin && (
             <Button
               variant="ghost"
@@ -82,8 +72,8 @@ const ItemCard: React.FC<ItemCardProps> = ({
             </Button>
           )}
         </div>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   );
 };
 

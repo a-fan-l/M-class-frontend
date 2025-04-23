@@ -16,5 +16,9 @@
   "course": {
     "title": "Popular Course",
     "description": "There are all kinds of courses, buy the courses you like."
+  },
+  "contact": {
+    "title": "Get alerts 💌 for new IGOs & IDOs",
+    "description": "Sign up for newsletter to get more News and Updates"
   }
 }

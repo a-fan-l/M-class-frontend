@@ -9,32 +9,33 @@ interface ItemProps {
     year: string;
     image: string;
     bgColor: string;
-    index: number;
+    description?: string;
 }
-const Item: React.FC<ItemProps> = ({ index, id, title, category, year, image, bgColor }) => {
+const Item: React.FC<ItemProps> = ({ id, title, category, year, image, bgColor, description }) => {
   return (
     <div 
-      key={id} 
+    // className='opacity-container-child' 
       className={`opacity-container-child group h-fit w-full cursor-pointer ${
-        index % 2 === 0 ? 'slide-from-left' : 'slide-from-right'
+        id % 2 === 0 ? 'slide-from-left' : 'slide-from-right'
       }`}
       style={{
-        marginTop: index % 2 === 1 ? '3.5rem' : '0'
+        marginTop: id % 2 === 1 ? '3.5rem' : '0'
       }}
     >
       <a className='h-fit w-full'>
-        <span className='opacity-container-child__image'>
+        <span>
           <div className='aspect-[3/2] w-full overflow-hidden rounded-3xl relative transition-colors duration-300 group-hover:bg-opacity-80' style={{backgroundColor: bgColor}}>
             <img src={image} alt='image' className='aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-[1.015]' />
           </div>
         </span>
-        <span>
-          <div className='mt-4 space-y-2'>
-            <h3 className='text-xl font-bold text-[var(--section-title)]'>{title}</h3>
-            <p className='text-[var(--section-desc)]'>{category}</p>
-            <p className='text-[var(--section-desc)]'>{year}</p>
-          </div>
-        </span>
+        <div className='mt-4 space-y-2'>
+          <h3 className='text-xl font-bold text-[var(--section-title)]'>{title}</h3>
+          <p className='text-[var(--section-desc)]'>{description}</p>
+        </div>
+        <div className='flex items-center justify-between gap-2 mt-4'>
+          <p className='text-[var(--section-desc)]'>{category}</p>
+          <p className='text-[var(--section-desc)]'>{year}</p>
+        </div>
       </a>
     </div>
   )

@@ -16,5 +16,9 @@
   "course": {
     "title": "인기 강의",
     "description": "좋아하는 강의를 구매하세요."
+  },
+  "contact": {
+    "title": "새로운 IGO 및 IDO에 대한 경고 💌",
+    "description": "뉴스 및 업데이트를 더 많이 받으려면 뉴스레터에 가입하세요"
   }
 }

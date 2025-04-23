@@ -10,7 +10,7 @@ const metrics = [
 interface TokenInfoProps {}
 const TokenInfo = ({}: TokenInfoProps) => {
   return (
-    <div className='w-full p-4 rounded-lg bg-[var(--section-background)]'>
+    <div className='w-full p-4 rounded-lg bg-[var(--section-background)] md:mb-30'>
       <div className="flex items-center justify-center container mx-auto">
         {/* <span className="absolute left-0 top-0 w-[500px] h-[4px] bg-gradient-to-r from-[rgba(248,37,82,0.5)] to-transparent"></span> */}
         {/* <span className="absolute right-0 bottom-0 rotate-180 w-[500px] h-[4px] bg-gradient-to-r from-[rgba(163,255,18,0.5)] to-[rgba(21,22,37,0)]"></span> */}

@@ -34,7 +34,7 @@ const faqs = [
 
 const FAQList = () => {
   return (
-    <div className="mt-4">
+    <div className="pt-4">
       {faqs.map(({ id, question, answer }) => (
         <FAQItem key={id} id={id} question={question} answer={answer} />
       ))}
