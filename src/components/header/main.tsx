@@ -46,8 +46,8 @@ const Index: React.FC<HeaderProps> = ({
             isMode={isMode} 
             modeProps={modeProps} 
             langProps={langProps} 
-            isWallet={isWallet} 
-            walletProps={walletProps}
+            // isWallet={isWallet} 
+            // walletProps={walletProps}
           >
             {children}
           </Tools>

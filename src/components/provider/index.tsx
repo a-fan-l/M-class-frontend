@@ -1,8 +1,7 @@
 'use client';
 
 import * as React from 'react';
-
-import { Provider, IntlProviderProps } from './main';
+import Providers, { IntlProviderProps } from './main';
 
 interface IIndexProps extends Omit<IntlProviderProps, 'children'> {
   children: React.ReactNode;
@@ -11,10 +10,11 @@ interface IIndexProps extends Omit<IntlProviderProps, 'children'> {
 
 const Index: React.FC<IIndexProps> = ({ children, locale, messages }) => {
   return (
-    <Provider locale={locale} messages={messages}>
+    <Providers locale={locale} messages={messages}>
       {children}
-    </Provider>
+    </Providers>
   );
 };
 
+export type { IIndexProps };
 export default Index;

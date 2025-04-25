@@ -1,8 +1,6 @@
 import React from "react";
 
 import Info from "./info";
-import PathDrawing from "./test";
-import PathMorphing from "./test2";
 import Wrap from "./wrap";
 
 const Banner: React.FC = () => {

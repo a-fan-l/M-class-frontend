@@ -1,6 +1,6 @@
 "use client"
 
-import { animate, motion, useMotionValue, useTransform } from "motion/react"
+import { animate, motion, useMotionValue, useTransform } from "framer-motion"
 import { useEffect } from "react"
 
 export interface INumberAnimateProps {

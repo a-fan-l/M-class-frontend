@@ -5,42 +5,50 @@ import { Provider as JotaiProvider } from 'jotai';
 import IntlProvider, { IIndexProps as IntlProviderProps } from '@/components/provider/intl';
 import StoreProvider from '@/components/provider/store';
 import ThemeProvider, { IIndexProps as ThemeProviderProps } from '@/components/provider/theme';
-import WalletProvider from '@/components/provider/wallet';
+import dynamic from 'next/dynamic';
 
 import '@rainbow-me/rainbowkit/styles.css';
+
+// 动态导入 WalletProvider，禁用 SSR
+const WalletProvider = dynamic(
+  () => import('@/components/provider/wallet'),
+  { ssr: false }
+);
 
 export interface ProviderProps extends Omit<IntlProviderProps, 'children'> {
   children: React.ReactNode;
   theme?: string;
 }
 
-const Index: React.FC<ProviderProps> = ({ children, locale, messages }) => {
+const Providers: React.FC<ProviderProps> = ({ children, locale, messages }) => {
   return (
-    <WalletProvider>
-      <JotaiProvider>
-        <IntlProvider locale={locale} messages={messages}>
-          <StoreProvider>
-            <ThemeProvider>{children}</ThemeProvider>
-          </StoreProvider>
-        </IntlProvider>
-      </JotaiProvider>
-    </WalletProvider>
+    <JotaiProvider>
+      <IntlProvider locale={locale} messages={messages}>
+        <StoreProvider>
+          <ThemeProvider>
+            <WalletProvider>
+              {children}
+            </WalletProvider>
+          </ThemeProvider>
+        </StoreProvider>
+      </IntlProvider>
+    </JotaiProvider>
   );
 };
 
 export type { IntlProviderProps, ThemeProviderProps };
 
-export type ProviderType = typeof Index & {
+export type ProviderType = typeof Providers & {
   intl: typeof IntlProvider;
   store: typeof StoreProvider;
   theme: typeof ThemeProvider;
-  wallet: typeof WalletProvider;
 }
 
-export const Provider = Index as ProviderType;
+const Provider = Providers as ProviderType;
+
 Provider.intl = IntlProvider;
 Provider.store = StoreProvider;
 Provider.theme = ThemeProvider;
-Provider.wallet = WalletProvider;
 
-export default Provider;
+export { Provider };
+export default Providers;

@@ -4,7 +4,7 @@ import { getLocales } from '@tools/locales';
 
 import Provider from '@components/provider';
 import '@styles/globals.css';
-import Layout from './_components/layout';
+import Layout from './(primary)/_components/layout';
 
 const russo = Russo_One({
   weight: '400',
@@ -24,16 +24,17 @@ export default async function RootLayout({
   params,
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = params;
+  const { locale } = await params;
   const messages = await getLocales(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${russo.className} antialiased`}>
         <Provider locale={locale} messages={messages}>
-          <Layout>{children}</Layout>
+          {/* <Layout>{children}</Layout> */}
+          {children}
         </Provider>
       </body>
     </html>

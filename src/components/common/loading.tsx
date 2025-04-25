@@ -1,7 +1,9 @@
 "use client"
 
-import { motion, Variants } from "motion/react"
+import { motion, Variants } from "framer-motion"
+
 import "./style.css"
+
 export interface LoadingProps {}
 const Loading: React.FC<LoadingProps> = () => {
     const dotVariants: Variants = {

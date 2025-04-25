@@ -1,6 +1,4 @@
-import { atom, Getter } from 'jotai'
-import { formatCharToOmit } from '@utils/format'
-import { GetAccountReturnType } from '@wagmi/core'
+import { atom } from 'jotai'
 import { Chain } from 'wagmi/chains'
 
 export type addressType = `0x${string}`
