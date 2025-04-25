@@ -13,6 +13,8 @@
     },
     "btn": {
         "sign": "Sign",
-        "connect": "Connect"
+        "connect": "Connect",
+        "disconnect": "Disconnect",
+        "connectWallet": "Connect Wallet"
     }
 }

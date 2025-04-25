@@ -34,6 +34,7 @@ const Index: React.FC<IIndexProps> = ({ name, isLogo }) => {
         current: olanguage,
         onChange,
       }}
+      isWallet
     />
   );
 };

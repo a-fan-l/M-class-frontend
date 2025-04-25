@@ -10,10 +10,11 @@ import Sign from './sign';
 
 export interface HeaderProps extends Omit<HeaderRootProps, 'children'>, HeaderToolsProps {
   isLogo?: boolean;
-//   logo?: LogoProps;
+  //   logo?: LogoProps;
   isMenu?: boolean;
   name?: string;
   isSign?: boolean;
+  isWallet?: boolean;
 }
 
 const Index: React.FC<HeaderProps> = ({
@@ -24,7 +25,9 @@ const Index: React.FC<HeaderProps> = ({
   langProps,
   name,
   children,
-  isSign
+  isSign,
+  isWallet,
+  walletProps
 }) => {
   return (
     <Header name={name}>
@@ -36,7 +39,7 @@ const Index: React.FC<HeaderProps> = ({
               {/* {ismenu && menups && <Navigation {...menups} />} */}
               {isMenu &&  <Menu />}
             </div>
-            <Tools isLang={isLang} isMode={isMode} modeProps={modeProps} langProps={langProps}>
+            <Tools isLang={isLang} isMode={isMode} modeProps={modeProps} langProps={langProps} isWallet={isWallet} walletProps={walletProps}>
               {children}
             </Tools>
           </div>
