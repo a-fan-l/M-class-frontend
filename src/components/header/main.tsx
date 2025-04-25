@@ -2,13 +2,12 @@
 
 import * as React from 'react';
 
-import Header, { IIndexProps as HeaderRootProps } from './root';
 // import Logo, { IIndexProps as LogoProps } from './logo';
 import Tools, { HeaderToolsProps } from './tools';
 import Menu from './menu';
 import Sign from './sign';
 
-export interface HeaderProps extends Omit<HeaderRootProps, 'children'>, HeaderToolsProps {
+export interface HeaderProps extends HeaderToolsProps {
   isLogo?: boolean;
   //   logo?: LogoProps;
   isMenu?: boolean;
@@ -20,7 +19,7 @@ export interface HeaderProps extends Omit<HeaderRootProps, 'children'>, HeaderTo
 const Index: React.FC<HeaderProps> = ({
   isLang,
   isMode,
-  isMenu,
+  isMenu = true,
   modeProps,
   langProps,
   name,
@@ -30,22 +29,31 @@ const Index: React.FC<HeaderProps> = ({
   walletProps
 }) => {
   return (
-    <Header name={name}>
-      <section className="header flex flex-1 items-center justify-center">
-        <div className="content flex items-center">
-          {/* {islogo ? <Logo {...logo} /> : null} */}
-          <div className="right flex h-full flex-1 items-center">
-            <div className="menu-root flex h-full items-center max-md:hidden min-md:flex-1">
-              {/* {ismenu && menups && <Navigation {...menups} />} */}
-              {isMenu &&  <Menu />}
+    <header className={`bg-[rgba(11,11,13,0.7)] backdrop-blur-sm header-root fixed top-0 left-0 flex min-h-10 w-full items-center z-[9999] ${name}`}>
+      <div className="container mx-auto px-4 flex items-center justify-between py-3">
+        <div className="flex items-center justify-between md:gap-15 gap-6">
+          <div className="text-white text-2xl font-bold w-50">M class</div>
+          {isMenu && (
+            <div className='flex-1'>
+              <Menu />
             </div>
-            <Tools isLang={isLang} isMode={isMode} modeProps={modeProps} langProps={langProps} isWallet={isWallet} walletProps={walletProps}>
-              {children}
-            </Tools>
-          </div>
+          )}
         </div>
-      </section>
-    </Header>
+        
+        <div className="flex items-center gap-4">
+          <Tools 
+            isLang={isLang} 
+            isMode={isMode} 
+            modeProps={modeProps} 
+            langProps={langProps} 
+            isWallet={isWallet} 
+            walletProps={walletProps}
+          >
+            {children}
+          </Tools>
+        </div>
+      </div>
+    </header>
   );
 };
 

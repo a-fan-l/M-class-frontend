@@ -37,7 +37,8 @@
       "@public/*": ["./public/*"],
       "@static/*": ["./src/static/*"],
       "@styles/*": ["./src/styles/*"],
-      "@config/*": ["./src/config/*"]
+      "@config/*": ["./src/config/*"],
+      "@abis/*": ["./src/abis/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

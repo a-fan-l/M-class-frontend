@@ -8,7 +8,7 @@
 
 .menu-item {
   text-decoration: none;
-  color: #333;
+  color: #fff;
   font-size: 1rem;
   font-weight: 500;
   position: relative;
@@ -47,7 +47,7 @@
 }
 
 .menu-text-inner:first-child {
-  color: #333;
+  color: #fff;
 }
 
 .menu-text-inner:last-child {
