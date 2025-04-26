@@ -38,7 +38,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
       }) => {
         const ready = mounted;
         const connected = ready && account && chain;
-
+        console.log(account, 'account', chain, 'chain');
         return (
           <div
             {...(!ready && {
@@ -80,11 +80,6 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
                         />
                       )}
                       <span className="text-sm text-white font-normal">{account.displayName}</span>
-                      {/* <span className="text-sm text-white font-normal">
-                        {account.displayBalance
-                          ? `${account.displayBalance}`
-                          : ''}
-                      </span> */}
                     </div>
                   </button>
 

@@ -9,16 +9,14 @@ const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-1">
-        {/* <div className="container mx-auto px-4 py-8"> */}
           <Banner />
-          <div className="grid gap-8">
+          {/* <div className="grid gap-8"> */}
             <TokenInfo />
             <Course />
             <Team />
             <FAQ />
             <Contact />
-          </div>
-        {/* </div> */}
+          {/* </div> */}
       </main>
     </div>
   );

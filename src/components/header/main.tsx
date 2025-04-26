@@ -5,7 +5,7 @@ import * as React from 'react';
 // import Logo, { IIndexProps as LogoProps } from './logo';
 import Tools, { HeaderToolsProps } from './tools';
 import Menu from './menu';
-import Sign from './sign';
+// import Sign from './sign';
 
 export interface HeaderProps extends HeaderToolsProps {
   isLogo?: boolean;
@@ -46,8 +46,8 @@ const Index: React.FC<HeaderProps> = ({
             isMode={isMode} 
             modeProps={modeProps} 
             langProps={langProps} 
-            // isWallet={isWallet} 
-            // walletProps={walletProps}
+            isWallet={isWallet} 
+            walletProps={walletProps}
           >
             {children}
           </Tools>

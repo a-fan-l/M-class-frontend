@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import Providers, { IntlProviderProps } from './main';
+import {default as Providers, IntlProviderProps } from './main';
 
 interface IIndexProps extends Omit<IntlProviderProps, 'children'> {
   children: React.ReactNode;

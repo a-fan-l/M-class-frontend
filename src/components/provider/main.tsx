@@ -20,7 +20,7 @@ export interface ProviderProps extends Omit<IntlProviderProps, 'children'> {
   theme?: string;
 }
 
-const Providers: React.FC<ProviderProps> = ({ children, locale, messages }) => {
+const Index: React.FC<ProviderProps> = ({ children, locale, messages }) => {
   return (
     <JotaiProvider>
       <IntlProvider locale={locale} messages={messages}>
@@ -38,17 +38,19 @@ const Providers: React.FC<ProviderProps> = ({ children, locale, messages }) => {
 
 export type { IntlProviderProps, ThemeProviderProps };
 
-export type ProviderType = typeof Providers & {
+export type ProviderType = typeof Index & {
   intl: typeof IntlProvider;
   store: typeof StoreProvider;
   theme: typeof ThemeProvider;
+  wallet: typeof WalletProvider;
+  jotai: typeof JotaiProvider;
 }
 
-const Provider = Providers as ProviderType;
-
+const Provider = Index as ProviderType;
+Provider.wallet = WalletProvider;
 Provider.intl = IntlProvider;
 Provider.store = StoreProvider;
 Provider.theme = ThemeProvider;
+Provider.jotai = JotaiProvider;
 
-export { Provider };
-export default Providers;
+export default Provider;

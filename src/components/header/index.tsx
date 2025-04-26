@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import Header, { HeaderProps } from './main';
 import useLang, { LanguageData } from '@/hooks/system/useLanguage';
