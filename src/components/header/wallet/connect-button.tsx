@@ -1,30 +1,30 @@
 'use client';
 
 import { ConnectButton as RainbowConnectButton } from '@rainbow-me/rainbowkit';
-import { useSetAtom } from 'jotai';
-import { useAccount, useBalance, useChainId,  } from 'wagmi';
+import { useAccount, useBalance, useChainId } from 'wagmi';
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-
-import { walletAtom } from '@atoms/_wallet';
+import useWalletAuth from '@hooks/useWalletAuth';
+import { Spinner } from '@/components/ui/spinner';
 
 export interface ConnectButtonProps {}
 const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
-  const { address, isConnected, connector } = useAccount();
-  const { data: balanceData } = useBalance({ address });
+  const { address, isConnected, connector, isConnecting, isReconnecting } = useAccount();
   const chainId = useChainId();
-  const setWalletState = useSetAtom(walletAtom);
+  const {actions: { setIsConnected, setAddress, setChainId, setBalance, onLogin}} = useWalletAuth({});
   const t = useTranslations('globals');
 
   // 监听钱包状态更改，更新到 Jotai store
   useEffect(() => {
-    setWalletState({
-      isConnected,
-      address: address?.toString(),
-      balance: balanceData?.formatted,
-      chainId,
-    });
-  }, [isConnected, address, balanceData, chainId, setWalletState]);
+    setIsConnected(isConnected);
+    setAddress(address);
+    setChainId(chainId);
+    // setBalance(balanceData?.value ?? BigInt(0));
+  }, [isConnected, address, chainId]);
+  
+  const onClick = () => {
+    onLogin({ address: address as string })
+  }
 
   return (
     <RainbowConnectButton.Custom>
@@ -34,11 +34,11 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
         openAccountModal,
         openChainModal,
         openConnectModal,
-        mounted,
+        mounted,        
       }) => {
         const ready = mounted;
         const connected = ready && account && chain;
-        console.log(account, 'account', chain, 'chain');
+
         return (
           <div
             {...(!ready && {
@@ -116,6 +116,19 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
                       />
                     </svg>
                   </button>
+                  {connected ? (<button
+                      onClick={onClick}
+                      type="button"
+                      className="cursor-pointer bg-transparent border-1 border-primary/40 text-white font-sm py-2 px-4 rounded-full transition-colors"
+                  >
+                      <div className="flex flex-row items-center gap-3 justify-between">
+                        {/* {isConnecting || isReconnecting ? (
+                          <Spinner size="sm" color="info" className="mr-1" />
+                        ) : null} */}
+                        Signin
+                      </div>
+                  </button>)
+                   : null}
                 </div>
               );
             })()}
@@ -127,3 +140,4 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
 }
 
 export default ConnectButton;
+

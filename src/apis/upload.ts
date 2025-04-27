@@ -8,7 +8,7 @@ export const uploadApi = {
     const formData = new FormData();
     formData.append('file', file);
 
-    return api.post<UploadResponse>('/upload', formData, {
+    return api.post<UploadResponse>('/api/upload', formData, {
       onProgress,
       headers: {},
     });

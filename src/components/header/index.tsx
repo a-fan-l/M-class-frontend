@@ -6,14 +6,16 @@ import Header, { HeaderProps } from './main';
 import useLang, { LanguageData } from '@/hooks/system/useLanguage';
 import { useRouter } from '@i18n/navigation';
 import '@styles/base.css';
+import useWalletAuth from '@/hooks/useWalletAuth';
 
 interface IIndexProps
   extends Partial<Pick<HeaderProps, 'isLogo' | 'isMode' | 'isLang' | 'name'>> {}
 
-const Index: React.FC<IIndexProps> = ({ name, isLogo }) => {
+const Index: React.FC<IIndexProps> = ({}) => {
   const { init, data, olanguage, open, toggle, change } = useLang();
   const router = useRouter();
-
+  const { state: { isConnected } } = useWalletAuth({})
+  
   useEffect(() => {
     init();
   }, []);
@@ -22,6 +24,8 @@ const Index: React.FC<IIndexProps> = ({ name, isLogo }) => {
     change(params);
     router.replace('/', { locale: params.value });
   };
+
+  console.log('isConnected', isConnected)
 
   return (
     <Header
@@ -35,6 +39,7 @@ const Index: React.FC<IIndexProps> = ({ name, isLogo }) => {
         onChange,
       }}
       isWallet
+      // isSign={isConnected}
     />
   );
 };

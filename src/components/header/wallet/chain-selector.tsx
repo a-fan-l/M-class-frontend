@@ -1,19 +1,18 @@
 'use client';
 
 import { useState } from 'react';
-import { useAtom } from 'jotai';
-import { walletAtom } from '@atoms/_wallet';
+import useWalletAuth from '@hooks/useWalletAuth';
 import { useSwitchChain } from 'wagmi';
 import { mainnet, polygon, optimism, arbitrum, base } from 'wagmi/chains';
 import type { Chain } from 'wagmi/chains';
 
 const ChainSelector = () => {
-  const [walletState] = useAtom(walletAtom);
+  const { state:{ isConnected, chainId }} = useWalletAuth({});
   const { switchChain } = useSwitchChain();
   const [isOpen, setIsOpen] = useState(false);
 
   // 如果没有连接钱包，不显示任何内容
-  if (!walletState.isConnected) {
+  if (isConnected) {
     return null;
   }
 
@@ -31,14 +30,14 @@ const ChainSelector = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="bg-gray-800 hover:bg-gray-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2"
       >
-        {walletState.chainId && (
+        {chainId && (
           <img
-            src={supportedChains.find(chain => chain.id === walletState.chainId)?.iconUrl}
-            alt={supportedChains.find(chain => chain.id === walletState.chainId)?.name}
+            src={supportedChains.find(chain => chain.id ===chainId)?.iconUrl}
+            alt={supportedChains.find(chain => chain.id === chainId)?.name}
             className="w-5 h-5 rounded-full"
           />
         )}
-        <span>{supportedChains.find(chain => chain.id === walletState.chainId)?.name || 'Unknown Chain'}</span>
+        <span>{supportedChains.find(chain => chain.id === chainId)?.name || 'Unknown Chain'}</span>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
@@ -70,7 +69,7 @@ const ChainSelector = () => {
                   }
                 }}
                 className={`block w-full text-left px-4 py-2 text-sm ${
-                  walletState.chainId === chain.id
+                  chainId === chain.id
                     ? 'bg-blue-600 text-white'
                     : 'text-gray-300 hover:bg-gray-700'
                 }`}

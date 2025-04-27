@@ -1,5 +1,6 @@
 import { ApiResponse } from "@/types/api";
 
+
 // 请求配置接口
 interface RequestConfig extends Omit<RequestInit, 'cache'> {
   timeout?: number;
@@ -40,8 +41,8 @@ const abortControllers = new Map<string, AbortController>();
 export class ApiClient {
   private baseUrl: string;
 
-  constructor(baseUrl?: string) {
-    this.baseUrl = baseUrl || process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
+  constructor() {
+    this.baseUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000";
   }
 
   private async request<T>(

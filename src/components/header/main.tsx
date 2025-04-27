@@ -26,7 +26,8 @@ const Index: React.FC<HeaderProps> = ({
   children,
   isSign,
   isWallet,
-  walletProps
+  walletProps,
+  signProps,
 }) => {
   return (
     <header className={`bg-[rgba(11,11,13,0.7)] backdrop-blur-sm header-root fixed top-0 left-0 flex min-h-10 w-full items-center z-[9999] ${name}`}>
@@ -48,6 +49,8 @@ const Index: React.FC<HeaderProps> = ({
             langProps={langProps} 
             isWallet={isWallet} 
             walletProps={walletProps}
+            // isSign={isSign}
+            // signProps={signProps}
           >
             {children}
           </Tools>

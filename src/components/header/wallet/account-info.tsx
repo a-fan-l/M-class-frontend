@@ -1,24 +1,27 @@
 'use client';
 
-import { useAtom } from 'jotai';
-import { walletAtom } from '@atoms/_wallet';
-import { formatCharToOmit } from '@utils/format';
-import { useAccount, useDisconnect } from 'wagmi';
+import { FC, useCallback } from 'react';
+import useWalletAuth from '@hooks/useWalletAuth';
 
-const AccountInfo = () => {
-  const [walletState] = useAtom(walletAtom);
-  const { disconnect } = useDisconnect();
-  const { address } = useAccount();
+export interface AccountInfoProps {}
+const AccountInfo:FC<AccountInfoProps> = () => {
+  const { state: {
+    isConnected,
+    address,
+    balance,
+    tokenSymbol
+  }, actions: {
+    disconnect
+  } } = useWalletAuth();
 
-  // 如果没有连接钱包，不显示任何内容
-  if (!walletState.isConnected || !address) {
+
+  if (!isConnected || !address) {
     return null;
   }
 
-  // 格式化钱包地址的辅助函数
-  const formatAddress = (address: string) => {
+  const formatAddress = useCallback((address: string) => {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
-  };
+  }, []);
 
   return (
     <div className="flex items-center gap-2">
@@ -30,7 +33,7 @@ const AccountInfo = () => {
           <div className="flex flex-col">
             <span className="text-sm font-medium">{formatAddress(address)}</span>
             <span className="text-xs text-gray-400">
-              {walletState.balance ? `${walletState.balance} ETH` : 'Loading...'}
+              {balance ? `${balance} ${tokenSymbol}` : 'Loading...'}
             </span>
           </div>
         </div>

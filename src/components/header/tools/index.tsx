@@ -4,11 +4,8 @@ import * as React from 'react';
 
 import Language, { LanguageProps } from '../language';
 import Mode, { IIndexProps as ModeProps } from '../mode';
-import { walletAtom } from '@/atoms/_wallet';
-import { useAtom } from 'jotai';
-import ChainSelector from '../wallet/chain-selector';
 import ConnectButton, { ConnectButtonProps } from '../wallet/connect-button';
-
+import Sign, { IIndexProps as SignProps } from '../sign';
 export interface HeaderToolsProps {
   children?: React.ReactNode;
   isMode?: boolean;
@@ -16,17 +13,21 @@ export interface HeaderToolsProps {
   langProps?: LanguageProps;
   modeProps?: ModeProps;
   isWallet?: boolean;
+  isSign?: boolean;
   walletProps?: ConnectButtonProps;
+  signProps?: SignProps;
 }
 
 const Index: React.FC<HeaderToolsProps> = ({
   children,
   isMode = true,
   isLang = true,
+  isSign = true,
   langProps,
   modeProps,
   isWallet,
-  walletProps
+  walletProps,
+  signProps,
 }) => {
   return (
     <div className="tools-root flex items-center max-md:flex-1 relative z-[9]">
@@ -47,6 +48,11 @@ const Index: React.FC<HeaderToolsProps> = ({
           <Language {...langProps} />
         </div>
       )}
+
+      {/* {isSign && <div className="tools-items z-[9]">
+          <Sign />
+        </div>
+        } */}
       {children}
     </div>
   );

@@ -20,21 +20,21 @@ export interface Lesson {
 // 课程相关API
 export const courseApi = {
     getCourses: (params?: PageQueryDto) => 
-      api.get<CourseListResponse>('/course/page', {
+      api.get<CourseListResponse>('/api/course/page', {
         cache: true,
         ...(params && { params }),
       }),
     
     getAllCourses: () => 
-      api.get<Course[]>('/course/list', {
+      api.get<Course[]>('/api/course/list', {
         cache: true,
       }),
     
     getCourseDetail: (id: string) => 
-      api.get<CourseDetail>(`/course/detail/${id}`, {
+      api.get<CourseDetail>(`/api/course/detail/${id}`, {
         cache: true,
       }),
     
     createCourse: (data: CreateCourseDto) => 
-      api.post<Course>('/course/add', data),
+      api.post<Course>('/api/course/add', data),
   };
