@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { useMode } from '@/hooks/system/useMode';
 import { Popover, PopoverContent, PopoverTrigger } from '@components/ui/popover';
-import { useToast } from '@components/ui/toast';
+// import { useToast } from '@components/ui/toast';
 import { useDisconnect } from 'wagmi';
 
 import './style.css';
@@ -21,7 +21,7 @@ export interface UserProps {
 const Index: React.FC<UserProps> = ({ open, toggle, userInfo }) => {
   const { mode } = useMode();
   const [isOpen, setIsOpen] = useState(open);
-  const { toast } = useToast();
+  // const { toast } = useToast();
   const { disconnect } = useDisconnect();
 
   const ontoggle = (e: React.MouseEvent) => {
@@ -36,17 +36,10 @@ const Index: React.FC<UserProps> = ({ open, toggle, userInfo }) => {
   const handleDisconnect = async () => {
     try {
       await disconnect();
-      toast({
-        title: "Disconnected",
-        description: "Successfully disconnected from the network",
-      });
+
     } catch (error) {
       console.error('Disconnect error:', error);
-      toast({
-        title: "Error",
-        description: "Failed to disconnect from the network. Please try again.",
-        variant: "destructive",
-      });
+
     }
   };
 

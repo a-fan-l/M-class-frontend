@@ -52,7 +52,7 @@ const useWalletAuth = ({
   //     setIsConnected(_isConnected);
   //     setIsSigningMessage(true);
   //     try {
-  //       const sig = await signMessageAsync({ message: signatureMessage });
+        // const sig = await signMessageAsync({ message: signatureMessage });
   //       setSigner(sig);
   //       setIsAuthenticated(true);
   //     } catch (error) {

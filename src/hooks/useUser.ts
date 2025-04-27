@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { UserProfile, UpdateUserDto } from '@/types/user';
+import { UserProfile } from '@/types/user';
 import { userApi } from '@/apis/user';
 import { ApiResponse } from '@/types/api';
 
@@ -28,7 +28,7 @@ export const useUser = () => {
     }, []);
 
     // Update user profile
-    const updateProfile = useCallback(async (data: UpdateUserDto) => {
+    const updateProfile = useCallback(async (data: UserProfile) => {
         setLoading(true);
         setError(null);
         try {
