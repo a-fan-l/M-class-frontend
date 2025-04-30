@@ -13,6 +13,7 @@
   --background: oklch(1 0 0);
   --foreground: #171717;
 
+  --button-primary: #FFFFFF;
   --primary: #A3FF12;
   /* --primary: rgba(0, 249, 158, 1); */
   --primary-foreground: oklch(0.985 0 0);

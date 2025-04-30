@@ -1,14 +1,17 @@
 'use client';
 
-import React from 'react'
+import React, {useEffect} from 'react'
 
 import CourseContent from '@/components/course/index'
+import { courseApi } from '@/apis/course';
 
 const Course = () => {
+  useEffect(() => {
+    // get course list
+  }, []);
+  
   return (
-    <div className='full-w flex flex-col items-center justify-center'>
-      <CourseContent />
-    </div>
+    <CourseContent />
   )
 }
 

@@ -1,12 +1,11 @@
 import { 
-  PageQueryDto, 
+  CourseQueryDto, 
   CreateCourseDto, 
   Course, 
   CourseDetail, 
   CourseListResponse 
 } from '@/types/course';
-
-import { api } from './fetch';
+import { fetchData } from '@/utils/fetch';
 
 export interface Lesson {
   id: string;
@@ -19,22 +18,25 @@ export interface Lesson {
 
 // 课程相关API
 export const courseApi = {
-    getCourses: (params?: PageQueryDto) => 
-      api.get<CourseListResponse>('/api/course/page', {
-        cache: true,
-        ...(params && { params }),
-      }),
-    
-    getAllCourses: () => 
-      api.get<Course[]>('/api/course/list', {
-        cache: true,
-      }),
-    
-    getCourseDetail: (id: string) => 
-      api.get<CourseDetail>(`/api/course/detail/${id}`, {
-        cache: true,
-      }),
-    
-    createCourse: (data: CreateCourseDto) => 
-      api.post<Course>('/api/course/add', data),
-  };
+  getCourses: (params?: CourseQueryDto) => 
+    fetchData<CourseListResponse>('/api/course/page', {
+      method: 'GET',
+      params,
+    }),
+  
+  getAllCourses: () => 
+    fetchData<Course[]>('/api/course/list', {
+      method: 'GET',
+    }),
+  
+  getCourseDetail: (id: string) => 
+    fetchData<CourseDetail>(`/api/course/detail/${id}`, {
+      method: 'GET',
+    }),
+  
+  createCourse: (data: CreateCourseDto) => 
+    fetchData<Course>('/api/course/add', {
+      method: 'POST',
+      body: data,
+    }),
+};

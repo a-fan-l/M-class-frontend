@@ -8,6 +8,10 @@ export interface NonceRequest {
   address: string;
 }
 
+export interface NonceResponse {
+  nonce: string;
+}
+
 export interface LoginRequest {
   signature?: string;
   address: string

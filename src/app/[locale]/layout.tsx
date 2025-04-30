@@ -4,7 +4,8 @@ import { getLocales } from '@tools/locales';
 
 import Provider from '@components/provider';
 import '@styles/globals.css';
-import Layout from './(primary)/_components/layout';
+import Loading from '@/components/loading';
+
 
 const russo = Russo_One({
   weight: '400',
@@ -33,8 +34,8 @@ export default async function RootLayout({
     <html lang={locale} suppressHydrationWarning>
       <body className={`${russo.className} antialiased`}>
         <Provider locale={locale} messages={messages}>
-          {/* <Layout>{children}</Layout> */}
           {children}
+          <Loading />
         </Provider>
       </body>
     </html>

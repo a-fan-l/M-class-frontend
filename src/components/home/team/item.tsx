@@ -22,13 +22,14 @@ const ItemCard: React.FC<ItemCardProps> = ({
 }) => {
   return (
     <div className="team-item">
-      <div className="flex flex-col items-center py-10 px-6">
+      <div className="flex flex-col items-center py-4 px-6 md:px-10 md:py-6 w-full h-full">
         <img
           // src={avatar}
-          // alt={name}
+          // src="/avatars/claudia.jpg"
+          alt={name}
           className="w-24 h-24 rounded-full mb-4 object-cover text-[var(--section-title)]"
         />
-        <h4 className="font-bold text-lg mb-2 text-[var(--section-title)]">
+        <h4 className="font-bold text-md mb-2 text-[var(--section-title)] md:text-lg">
           {name}
         </h4>
         <p className="mb-4 text-[var(--section-desc)]">

@@ -1,29 +1,44 @@
 import React from "react";
-import { Card } from "@/components/ui/card";
 
 import Item from "./item";
 
-export interface MetricItem {
-  label: string;
-  value: number;
-  symbol: string;
-}
+
 export interface MetricsGridProps {
-  metrics: MetricItem[];
+  courseCount: number;
+  typeCount: number;
+  userCount: number;
+  createTime: number;
 }
 
-const MetricsGrid: React.FC<MetricsGridProps> = ({ metrics }) => {
+const MetricsGrid: React.FC<MetricsGridProps> = ({ 
+  courseCount,
+  typeCount,
+  userCount,
+  createTime,
+ }) => {
   return (
     <div className="container mx-auto px-4">
-      <div className="grid grid-cols-4 md:grid-cols-4 gap-2">
-        {metrics.map((metric, index) => (
-          <Item
-            key={index}
-            label={metric.label}
-            value={metric.value}
-            symbol={metric.symbol}
-          />
-        ))}
+      <div className="grid grid-cols-4 gap-2">
+        <Item
+          label="Course"
+          value={courseCount}
+          symbol=''
+        />
+        <Item
+          label="Type"
+          value={typeCount}
+          symbol=''
+        />
+        <Item
+          label="Users"
+          value={userCount}
+          symbol=''
+        />
+        <Item
+          label="CreateTime"
+          value={createTime}
+          symbol=''
+        />
       </div>
     </div>
   );

@@ -1,15 +1,14 @@
-
 import { UploadResponse } from '@/types/upload';
-
-import { api } from './fetch';
+import { fetchData } from '@/utils/fetch';
 
 export const uploadApi = {
   uploadFile: (file: File, onProgress?: (progress: number) => void) => {
     const formData = new FormData();
     formData.append('file', file);
 
-    return api.post<UploadResponse>('/api/upload', formData, {
-      onProgress,
+    return fetchData<UploadResponse>('/api/upload', {
+      method: 'POST',
+      body: formData,
       headers: {},
     });
   },
@@ -18,8 +17,9 @@ export const uploadApi = {
     const formData = new FormData();
     formData.append('image', file);
 
-    return api.post<UploadResponse>('/upload/image', formData, {
-      onProgress,
+    return fetchData<UploadResponse>('/upload/image', {
+      method: 'POST',
+      body: formData,
       headers: {},
     });
   },
@@ -28,8 +28,9 @@ export const uploadApi = {
     const formData = new FormData();
     formData.append('video', file);
 
-    return api.post<UploadResponse>('/upload/video', formData, {
-      onProgress,
+    return fetchData<UploadResponse>('/upload/video', {
+      method: 'POST',
+      body: formData,
       headers: {},
     });
   },

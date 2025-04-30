@@ -1,25 +1,35 @@
-
 import { 
     UpdateUserRequest, 
     UserProfile, 
     LoginResponse, 
     LoginRequest, 
-    NonceRequest 
+    NonceRequest, 
+    NonceResponse
 } from '@/types/user';
-
-import { api } from './fetch';
+import { fetchData } from '@/utils/fetch';
 
 export const userApi = {
     getNonce: (params: NonceRequest) => 
-        api.post<string>('/api/user/nonce', { ...params }, { cache: true }),
+        fetchData<NonceResponse>('/api/user/nonce', {
+            method: 'POST',
+            body: params,
+        }),
     
     login: (params: LoginRequest) => 
-        api.post<LoginResponse>('/api/user/login', { ...params }),
+        fetchData<LoginResponse>('/api/user/login', {
+            method: 'POST',
+            body: params,
+        }),
     
     updateProfile: (params: UpdateUserRequest) => 
-        api.put<UserProfile>('/api/user/update-profile', params),
+        fetchData<UserProfile>('/api/user/update-profile', {
+            method: 'PUT',
+            body: params,
+        }),
     
     getProfile: () => 
-        api.get<UserProfile>('/api/user/profile', { cache: true }),
+        fetchData<UserProfile>('/api/user/profile', {
+            method: 'GET',
+        }),
 };
   

@@ -41,7 +41,7 @@ const teamList = [
 
 const TeamList = () => {
   return (
-    <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <div className="w-full grid grid-cols-4 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-8">
       {teamList.map((item, index) => (
         <ItemCard {...item} key={index} />
       ))}

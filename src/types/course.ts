@@ -1,9 +1,8 @@
-export interface PageQueryDto {
+export interface CourseQueryDto {
     page?: number;
     pageSize?: number;
-    sortBy?: string;
-    sortOrder?: 'asc' | 'desc';
-    search?: string;
+    keyword?: string;
+    category?: string;
 }
 
 export interface CreateCourseDto {
@@ -16,17 +15,25 @@ export interface CreateCourseDto {
     tags: string[];
 }
 
-export interface Course {
+export interface FileInfo {
     id: string;
+    size: number;
     title: string;
+    mimetype: string;
+}
+
+export interface Course {
+    id: number;
+    name: string;
+    category: string;
     description: string;
-    coverImage: string;
-    price: number;
+    price: string;
     duration: number;
-    level: 'beginner' | 'intermediate' | 'advanced';
-    tags: string[];
+    imgInfo: FileInfo;
+    fileInfo: FileInfo;
     createdAt: string;
     updatedAt: string;
+    imgUrl: string;
 }
 
 export interface CourseDetail extends Course {
@@ -45,7 +52,9 @@ export interface Lesson {
 
 export interface CourseListResponse {
     items: Course[];
-    total: number;
-    page: number;
-    pageSize: number;
+    meta: {
+        total: number;
+        page: number;
+        pageSize: number;
+    }
 }

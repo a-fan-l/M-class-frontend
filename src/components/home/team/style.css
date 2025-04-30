@@ -8,8 +8,15 @@
   transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity, transform, background-image;
   border-radius: 10px;
+  width: 100%;
+  min-width: 0;
 }
   
+.team-item img {
+  width: 100%;
+  height: auto;
+}
+
 .team-item:hover {
   opacity: 0.9;
   transform: translateY(-20px);
