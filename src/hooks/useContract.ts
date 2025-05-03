@@ -12,10 +12,16 @@ import {
 export const useContract = () => {
   const { isConnected } = useAccount();
   const [, initializeContracts] = useAtom(initializeContractsAtom);
+  const [contractState] = useAtom(contractStateAtom);
   const [ydContract] = useAtom(ydContractAtom);
   const [courseContract] = useAtom(courseContractAtom);
   const [provider] = useAtom(providerAtom);
   const [contractSigner] = useAtom(contractSignerAtom);
+
+  // 初始化合约
+  const initContracts = () => {
+    initializeContracts(isConnected);
+  };
 
   // 获取合约实例
   const getContract = (type: 'yd' | 'course') => {
@@ -47,6 +53,7 @@ export const useContract = () => {
       isConnected,
     },
     actions: {
+      initContracts,
       getContract,
       getBalance,
       getSigner,

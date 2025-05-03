@@ -1,7 +1,12 @@
 import { cookieStorage, createStorage, createConfig, http } from 'wagmi';
 import { mainnet, optimism, sepolia, polygon, arbitrum, base, zora } from 'wagmi/chains';
-import { connectorsForWallets } from '@rainbow-me/rainbowkit';
-import { metaMaskWallet, coinbaseWallet, imTokenWallet } from '@rainbow-me/rainbowkit/wallets';
+import { connectorsForWallets, WalletList } from '@rainbow-me/rainbowkit';
+import { 
+  metaMaskWallet,
+  coinbaseWallet,
+  imTokenWallet,
+  walletConnectWallet
+} from '@rainbow-me/rainbowkit/wallets';
 
 const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || '';
 
@@ -17,13 +22,19 @@ export const chains = [sepolia, mainnet] as const;
 const walletList = [
   {
     groupName: 'Installed',
-    wallets: [metaMaskWallet],
+    wallets: [
+      metaMaskWallet({ projectId })
+    ]
   },
   {
     groupName: 'Popular',
-    wallets: [coinbaseWallet, imTokenWallet],
-  },
-];
+    wallets: [
+      coinbaseWallet({ appName: 'Web3 University' }),
+      imTokenWallet({ projectId }),
+      walletConnectWallet({ projectId })
+    ]
+  }
+] as unknown as WalletList;
 
 const connectors = connectorsForWallets(walletList, {
   appName: 'Web3 University',
