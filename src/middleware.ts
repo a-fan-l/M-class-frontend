@@ -16,6 +16,12 @@ export async function middleware(request: NextRequest) {
   // 保留原有的 cookie 和语言检测逻辑
   let locale = request.cookies.get('NEXT_LOCALE')?.value;
   const { pathname } = request.nextUrl;
+
+  // 如果是 API 路由，跳过重写
+  if (pathname.startsWith('/api')) {
+    return NextResponse.next();
+  }
+  
   //   const route = find(pathname);
 
   //   if (route && route.auth && IS_LOGIN_AUTH) {

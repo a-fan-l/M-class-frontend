@@ -76,11 +76,13 @@ const useWalletAuth = ({
   }, [ _address]);
 
   useEffect(() => {
+    console.log(_isConnected, '_isConnected🐻')
     if (!_isConnected) {
+      // debugger
       setIsAuthenticated(false);
       setSigner("");
     }
-  }, [_isConnected, setIsAuthenticated, setSigner]);
+  }, [_isConnected, setSigner]);
 
   useEffect(() => {
     if (_chain || chainId) {
@@ -89,22 +91,62 @@ const useWalletAuth = ({
     }
   }, [chainId, _chain]);
 
-  // 登录
-  const onLogin = async ({address, signature}: LoginRequest) => {
-    try {
-      const nonce = await userApi.getNonce({address});
-      console.log('nonce', nonce);
-      const login_res = await userApi.login({address, signature});
-      console.log(`login_res token: ${login_res.data?.token}`);
 
-      // if(login_res.success && login_res.data?.token){
-      //   localStorage.setItem('token', login_res.data.token);
-      //   setIsAuthenticated(true);
-      //   return true;
-      // }
-      // return false;
+  // 登录逻辑
+  const onLogin = async ({ address }: { address: string }) => {
+    try {
+      // 1. 获取 nonce
+      const nonceResponse = await fetch('/api/proxy/user/nonce', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ address })
+      });
+  
+      if (!nonceResponse.ok) {
+        throw new Error(`获取 nonce 失败: ${nonceResponse.status} ${nonceResponse.statusText}`);
+      }
+  
+      console.log('nonceResponse🍎:', nonceResponse);
+      const nonceData = await nonceResponse.json();
+      const nonce = nonceData.nonce;
+      if (!nonce) {
+        throw new Error('无效的 nonce 响应');
+      }
+      console.log('获取到 nonce:', nonce);
+  
+      // 2. 钱包签名
+      const signature = await signMessageAsync({ message: nonce });
+      console.log('签名完成:', signature);
+  
+      // 3. 发送签名和地址到后端
+      const loginResponse = await fetch('/api/proxy/user/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ address, signature }),
+      });
+  
+      if (!loginResponse.ok) {
+        throw new Error(`登录失败: ${loginResponse.status} ${loginResponse.statusText}`);
+      }
+  
+      const loginData: LoginResponseDto = await loginResponse.json();
+      if (!loginData.token) {
+        throw new Error('登录响应无效: 未返回 token');
+      }
+  
+      // 4. 存储 token
+      localStorage.setItem('access_token', loginData.token);
+      setIsAuthenticated(true);
+      setSigner(signature);
+      console.log('登录成功, token 已存储:', loginData.token);
+  
+      return true;
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('登录错误:', error);
       setIsAuthenticated(false);
       return false;
     }

@@ -15,8 +15,6 @@ const nextConfig: NextConfig = {
       path.join(__dirname, 'src/styles'),
     ],
   },
-  
-
 
   webpack: (config, { isServer, dev }) => {
     // 添加路径别名解析

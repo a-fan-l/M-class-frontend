@@ -29,7 +29,7 @@ export async function fetchData<T>(
       url = queryString ? `${endpoint}?${queryString}` : endpoint;
     }
 
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}${url}`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}${url}`, {
       method: options.method || 'GET',
       headers: {
         ...defaultHeaders,

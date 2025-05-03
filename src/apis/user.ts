@@ -1,35 +1,37 @@
 import { 
-    UpdateUserRequest, 
-    UserProfile, 
-    LoginResponse, 
+    UpdateUserRequest,  
     LoginRequest, 
-    NonceRequest, 
-    NonceResponse
+    NonceRequest,
+    NonceResponse, 
 } from '@/types/user';
-import { fetchData } from '@/utils/fetch';
+
+console.log('proxy route loaded');
 
 export const userApi = {
     getNonce: (params: NonceRequest) => 
-        fetchData<NonceResponse>('/api/user/nonce', {
+        fetch('/api/proxy/user/nonce', {
             method: 'POST',
-            body: params,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(params),
         }),
     
     login: (params: LoginRequest) => 
-        fetchData<LoginResponse>('/api/user/login', {
-            method: 'POST',
-            body: params,
+        fetch('/api/proxy/user/login', {
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(params),
         }),
     
     updateProfile: (params: UpdateUserRequest) => 
-        fetchData<UserProfile>('/api/user/update-profile', {
+        fetch('/api/proxy/user/update-profile', {
             method: 'PUT',
-            body: params,
-        }),
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(params),
+        }).then(res => res.json()),
     
     getProfile: () => 
-        fetchData<UserProfile>('/api/user/profile', {
+        fetch('/api/proxy/user/profile', {
             method: 'GET',
-        }),
+            headers: { 'Content-Type': 'application/json' },
+        }).then(res => res.json()),
 };
   

@@ -5,7 +5,7 @@ import * as React from 'react';
 import Language, { LanguageProps } from '../language';
 import Mode, { IIndexProps as ModeProps } from '../mode';
 import ConnectButton, { ConnectButtonProps } from '../wallet/connect-button';
-import Sign, { IIndexProps as SignProps } from '../sign';
+import Sign, { IIndexProps as SignProps } from '../login';
 export interface HeaderToolsProps {
   children?: React.ReactNode;
   isMode?: boolean;

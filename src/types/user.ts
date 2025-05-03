@@ -27,6 +27,8 @@ export interface UserProfile {
 }
 
 export interface LoginResponse {
+  data: any;
+  success: any;
   token: string;
   user: UserProfile;
 } 
