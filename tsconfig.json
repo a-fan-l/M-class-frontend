@@ -38,7 +38,8 @@
       "@static/*": ["./src/static/*"],
       "@styles/*": ["./src/styles/*"],
       "@config/*": ["./src/config/*"],
-      "@abis/*": ["./src/abis/*"]
+      "@abis/*": ["./src/abis/*"],
+      "@typechain-types/*": ["./typechain-types/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

@@ -8,6 +8,7 @@ import ThemeProvider, { IIndexProps as ThemeProviderProps } from '@/components/p
 import WalletProvider from '@/components/provider/wallet';
 import '@rainbow-me/rainbowkit/styles.css';
 import { MessageProvider } from '@/hooks/useMessage';
+import ContractProvider from './contract';
 
 export interface ProviderProps extends Omit<IntlProviderProps, 'children'> {
   children: React.ReactNode;
@@ -21,9 +22,11 @@ const Index: React.FC<ProviderProps> = ({ children, locale, messages }) => {
         <StoreProvider>
           <ThemeProvider>
             <WalletProvider>
-              <MessageProvider>
-                {children}
-              </MessageProvider>
+              <ContractProvider>
+                <MessageProvider>
+                  {children}
+                </MessageProvider>
+              </ContractProvider>
             </WalletProvider>
           </ThemeProvider>
         </StoreProvider>
