@@ -5,15 +5,8 @@ import { Provider as JotaiProvider } from 'jotai';
 import IntlProvider, { IIndexProps as IntlProviderProps } from '@/components/provider/intl';
 import StoreProvider from '@/components/provider/store';
 import ThemeProvider, { IIndexProps as ThemeProviderProps } from '@/components/provider/theme';
-import dynamic from 'next/dynamic';
-
+import WalletProvider from '@/components/provider/wallet';
 import '@rainbow-me/rainbowkit/styles.css';
-
-// 动态导入 WalletProvider，禁用 SSR
-const WalletProvider = dynamic(
-  () => import('@/components/provider/wallet'),
-  { ssr: false }
-);
 
 export interface ProviderProps extends Omit<IntlProviderProps, 'children'> {
   children: React.ReactNode;
