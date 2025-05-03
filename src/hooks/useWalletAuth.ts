@@ -18,9 +18,8 @@ import {
   tokenSymbolAtom
 } from '@/atoms/wallet';
 import { useAtom } from 'jotai';
-import { userApi } from '@/apis/user';
-import { GetAccountReturnType } from 'wagmi/actions'
-import { LoginRequest } from '@/types/user';
+
+import { useMessage } from './useMessage';
 
 interface UseWalletAuthProps {
   signatureMessage?: string;
@@ -29,6 +28,7 @@ interface UseWalletAuthProps {
 const useWalletAuth = ({ 
   signatureMessage = 'Have you confirmed your authorization to log in to your web3 wallet?',
 }: UseWalletAuthProps = {}) => {
+  const { showMessage } = useMessage()
   const { isConnected: _isConnected, address: _address, chainId: _chainId, chain: _chain } = useAccount();
   const { disconnect } = useDisconnect();
   const [isSigningMessage, setIsSigningMessage] = useState(false);
@@ -45,27 +45,6 @@ const useWalletAuth = ({
   const [signer, setSigner] = useAtom(signerAtom);
   const [balance, setBalance] = useAtom(balanceAtom);
 
-  // Handle signature
-  // const handleSignature = async () => {
-  //   if (_isConnected) {
-  //     if (isAuthenticated || isSigningMessage) return;
-  //     setIsConnected(_isConnected);
-  //     setIsSigningMessage(true);
-  //     try {
-        // const sig = await signMessageAsync({ message: signatureMessage });
-  //       setSigner(sig);
-  //       setIsAuthenticated(true);
-  //     } catch (error) {
-  //       console.error('sign error:', error);
-  //       disconnect();
-  //       setIsAuthenticated(false);
-  //     } finally {
-  //       setIsSigningMessage(false);
-  //     }
-  //   } else {
-  //     alert('Please connect your wallet first');
-  //   }
-  // };
 
   useEffect(() => {
     setIsConnected(_isConnected);
@@ -78,11 +57,18 @@ const useWalletAuth = ({
   useEffect(() => {
     console.log(_isConnected, '_isConnected🐻')
     if (!_isConnected) {
-      // debugger
+      // Clear all authentication state when wallet disconnects
       setIsAuthenticated(false);
       setSigner("");
+      localStorage.removeItem('access_token');
+    } else {
+      // When wallet is connected, check if we have a valid token
+      const token = localStorage.getItem('access_token');
+      if (!token) {
+        setIsAuthenticated(false);
+      }
     }
-  }, [_isConnected, setSigner]);
+  }, [_isConnected, setSigner, setIsAuthenticated]);
 
   useEffect(() => {
     if (_chain || chainId) {
@@ -91,8 +77,47 @@ const useWalletAuth = ({
     }
   }, [chainId, _chain]);
 
+  const getNonce = async (address: string): Promise<string> => {
+    const nonceResponse = await fetch('/api/proxy/user/nonce', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ address })
+    });
+    if (!nonceResponse.ok) {
+      throw new Error(`获取 nonce 失败: ${nonceResponse.status} ${nonceResponse.statusText}`);
+    }
+    const nonceData = await nonceResponse.json();
+    return nonceData.nonce;
+  };
 
-  // 登录逻辑
+  const signMessage = async (nonce: string) => {
+    const signature = await signMessageAsync({ message: nonce });
+    return signature;
+  };
+
+  const login = async (address: string, signature: string) => {
+    const loginResponse = await fetch('/api/proxy/user/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ address, signature }),
+    });
+
+    if (!loginResponse.ok) {
+      throw new Error(`登录失败: ${loginResponse.status} ${loginResponse.statusText}`);
+    }
+
+    const loginData: LoginResponseDto = await loginResponse.json();
+    return loginData;
+  };
+  
+  const storeToken = (token: string) => {
+    localStorage.setItem('access_token', token);
+  };
+
   const onLogin = async ({ address }: { address: string }) => {
     try {
       // 1. 获取 nonce
@@ -114,11 +139,9 @@ const useWalletAuth = ({
       if (!nonce) {
         throw new Error('无效的 nonce 响应');
       }
-      console.log('获取到 nonce:', nonce);
-  
+
       // 2. 钱包签名
       const signature = await signMessageAsync({ message: nonce });
-      console.log('签名完成:', signature);
   
       // 3. 发送签名和地址到后端
       const loginResponse = await fetch('/api/proxy/user/login', {

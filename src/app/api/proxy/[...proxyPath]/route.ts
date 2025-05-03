@@ -95,8 +95,28 @@ async function proxyRequest(req: NextRequest, params: { proxyPath: string[] }) {
     });
   } catch (error) {
     console.error('代理错误:', error);
+    // 检查是否是网络错误
+    if (error instanceof TypeError && error.message.includes('fetch failed')) {
+      return new NextResponse(
+        JSON.stringify({ 
+          error: '网络连接错误', 
+          details: '无法连接到后端服务器，请检查网络连接或联系管理员' 
+        }),
+        {
+          status: 503,
+          headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
+    }
+    // 其他错误
     return new NextResponse(
-      JSON.stringify({ error: '代理请求失败', details: (error as Error).message }),
+      JSON.stringify({ 
+        error: '代理请求失败', 
+        details: (error as Error).message 
+      }),
       {
         status: 500,
         headers: {

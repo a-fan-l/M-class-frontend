@@ -6,15 +6,26 @@ import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import useWalletAuth from '@hooks/useWalletAuth';
 import { Spinner } from '@/components/ui/spinner';
-import SignButton from '@/components/header/login/index';
+import Logined from '@/components/header/login/logined';
+import Login from '@/components/header/login/index';
 
 export interface ConnectButtonProps {}
 const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
   const { address, isConnected, connector, isConnecting, isReconnecting } = useAccount();
   const chainId = useChainId();
-  const {actions: { setIsConnected, setAddress, setChainId, setBalance, onLogin}} = useWalletAuth({});
+  const {
+    actions: { 
+      setIsConnected, 
+      setAddress, 
+      setChainId, 
+      setBalance, 
+      onLogin
+    }, 
+    state: { 
+      isAuthenticated 
+    }
+  } = useWalletAuth({});
   const t = useTranslations('globals');
-
   
   useEffect(() => {
     setIsConnected(isConnected);
@@ -73,6 +84,9 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
                     className="cursor-pointer bg-transparent border-1 border-primary/40 text-white font-sm py-2 px-4 rounded-full transition-colors"
                   >
                     <div className="flex flex-row items-center gap-3 justify-between">
+                      {isConnecting || isReconnecting ? (
+                        <Spinner size="sm" color="info" className="mr-1" />
+                      ) : null}
                       {connector?.icon && (
                         <img
                           src={connector.icon}
@@ -81,6 +95,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
                         />
                       )}
                       <span className="text-sm text-white font-normal">{account.displayName}</span>
+                      {isConnected && isAuthenticated && <Logined />}
                     </div>
                   </button>
 
@@ -117,7 +132,7 @@ const ConnectButton: React.FC<ConnectButtonProps> = ({ }) => {
                       />
                     </svg>
                   </button>
-                  <SignButton/>
+                  <Login />
                 </div>
               );
             })()}
