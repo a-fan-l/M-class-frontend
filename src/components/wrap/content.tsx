@@ -1,43 +1,82 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ArrowUpDown } from "lucide-react";
+import { useAccount } from "wagmi";
+import { ethers } from "ethers";
 
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-
+import { useWrap } from "@/hooks/useWrap";
 import TokenInput from "./input";
 
-interface TokenSwapProps {
-}
-const TokenSwap: React.FC<TokenSwapProps> = ({ }) => {
-  const [amount, setAmount] = useState("0.111");
-  const [isSwapped, setIsSwapped] = useState(false);
+interface TokenSwapProps {}
 
-  const ydBalance = "15.6675311530998988";
-  const usdtBalance = "4.332419825800102";
+const TokenSwap: React.FC<TokenSwapProps> = () => {
+  const [amount, setAmount] = useState<string>('0');
+  const [isSwapped, setIsSwapped] = useState(false);
+  const { address } = useAccount();
+  const { state: { ydBalance, ydContract }, actions: { getYdBalance, getBalance } } = useWrap();
+  const [ethBalance, setEthBalance] = useState<string>("0");
 
   const handleAmountChange = (value: string) => {
     setAmount(value);
   };
 
-  const handleMaxClick = () => {
-    setAmount(isSwapped ? ydBalance : usdtBalance);
+  const handleMaxClick = async () => {
+    if (!address) return;
+    const balance = await getBalance(isSwapped);
+    setAmount(balance.toString());
   };
 
   const handleSwap = () => {
     setIsSwapped(!isSwapped);
+    setAmount(""); // Clear amount when swapping
   };
 
-  // Handle wrap action (mock function)
-  // const handleWrap = () => {
-  //   console.log(`Wrapping ${amount} ${isSwapped ? "vXZK" : "XZK"} to ${isSwapped ? "XZK" : "vXZK"}`);
-  // };
+  const handleWrap = async () => {
+    if (!amount || !ydContract || !address) return;
+
+    try {
+      if (isSwapped) {
+        // YD to ETH
+        const amountWei = ethers.utils.parseEther(amount);
+        const tx = await ydContract.sellTokens(amountWei);
+        await tx.wait();
+      } else {
+        // ETH to YD
+        const amountWei = ethers.utils.parseEther(amount);
+        const tx = await ydContract.buyWithETH({
+          value: amountWei
+        });
+        await tx.wait();
+      }
+      
+      // Refresh balances after successful transaction
+      getYdBalance();
+      // TODO: Refresh ETH balance
+    } catch (error) {
+      console.error('Wrap transaction failed:', error);
+    }
+  };
+
+  // Fetch ETH balance
+  useEffect(() => {
+    const fetchEthBalance = async () => {
+      if (address && window.ethereum) {
+        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const balance = await provider.getBalance(address);
+        setEthBalance(ethers.utils.formatEther(balance));
+      }
+    };
+
+    fetchEthBalance();
+  }, [address]);
 
   return (
-    <Card className="flex flex-col gap-8 border-none">
+    <Card className="flex flex-col gap-8 border-none bg-transparent">
       <div className="flex flex-col gap-5 relative">
         <TokenInput
-          tokenSymbol={isSwapped ? "YD" : "USDT"}
-          balance={isSwapped ? ydBalance : usdtBalance}
+          tokenSymbol={isSwapped ? "YD" : "ETH"}
+          balance={isSwapped ? ydBalance.toString() : ethBalance}
           value={amount}
           onChange={handleAmountChange}
           onMaxClick={handleMaxClick}
@@ -55,19 +94,22 @@ const TokenSwap: React.FC<TokenSwapProps> = ({ }) => {
         </div>
 
         <TokenInput
-          tokenSymbol={isSwapped ? "USDT" : "YD"}
-          balance={isSwapped ? usdtBalance : ydBalance}
+          tokenSymbol={isSwapped ? "ETH" : "YD"}
+          balance={isSwapped ? ethBalance : ydBalance.toString()}
           value={amount}
-          onChange={() => {}}
+          onChange={handleAmountChange}
+          onMaxClick={handleMaxClick}
+          showSplit={true}
           disabled
-          onMaxClick={() => {}}
-          showSplit={false}
         />
       </div>
-      <Button
-        className="w-full h-13 rounded-lg py-3 bg-primary/80 hover:bg-primary"
+
+      <Button 
+        onClick={handleWrap}
+        disabled={!amount || !address}
+        className="w-full bg-primary hover:bg-primary/90 text-black py-5"
       >
-        <span className='text-black/80 text-lg cursor-pointer '>Wrap</span>
+        {isSwapped ? "Sell YD" : "Buy YD"}
       </Button>
     </Card>
   );

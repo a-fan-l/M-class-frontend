@@ -34,7 +34,7 @@ const TokenInput: React.FC<TokenInputProps> = ({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           disabled={disabled}
-          className={`h-16 pr-2 text-5xl placeholder:text-white placeholder:text-5xl bg-transparent w-full border-none focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-none ${
+          className={`h-16 pr-2 placeholder:text-white placeholder:text-5xl bg-transparent w-full border-none focus:outline-none focus:ring-0 focus:ring-offset-0 focus:border-none focus-visible:ring-0 focus-visible:ring-offset-0 focus-visible:border-none ${
             disabled ? "text-gray-400" : "text-[var(--section-title)]"
           }`}
           placeholder="0.0"

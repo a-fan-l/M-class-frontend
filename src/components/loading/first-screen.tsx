@@ -1,10 +1,8 @@
 'use client';
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import { useSetAtom } from 'jotai';
 import { finishedStateAtom } from '@/atoms/global';
 
-import logoGif from './logo.gif';
 import './style.css';
 
 interface LoadingMaskProps {
@@ -30,7 +28,7 @@ const Index: React.FC<LoadingMaskProps> = ({ children }) => {
 
   return (
     <div className="first-screen-img isfirst flex">
-      <Image src={logoGif} alt="loading" width={100} height={100} unoptimized />
+      <div className='circular-spinner'></div>
     </div>
   );
 };

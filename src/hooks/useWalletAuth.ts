@@ -55,7 +55,6 @@ const useWalletAuth = ({
   }, [ _address]);
 
   useEffect(() => {
-    console.log(_isConnected, '_isConnected🐻')
     if (!_isConnected) {
       // Clear all authentication state when wallet disconnects
       setIsAuthenticated(false);
