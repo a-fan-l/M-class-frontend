@@ -3,7 +3,7 @@ import { atom } from 'jotai';
 export type ThemeMode = 'light' | 'dark';
 
 // 创建 mode atom
-export const modeAtom = atom<ThemeMode>('light');
+export const modeAtom = atom<ThemeMode>('dark');
 
 // 创建 open atom
 export const openAtom = atom<boolean>(false);
