@@ -106,7 +106,7 @@ const TokenSwap: React.FC<TokenSwapProps> = () => {
 
       <Button 
         onClick={handleWrap}
-        disabled={!amount || !address}
+        disabled={(!amount || !address) || false}
         className="w-full bg-primary hover:bg-primary/90 text-black py-5"
       >
         {isSwapped ? "Sell YD" : "Buy YD"}

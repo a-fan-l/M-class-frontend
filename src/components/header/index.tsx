@@ -12,7 +12,7 @@ interface IIndexProps
   extends Partial<Pick<HeaderProps, 'isLogo' | 'isMode' | 'isLang' | 'name'>> {}
 
 const Index: React.FC<IIndexProps> = ({}) => {
-  const { init, data, olanguage, open, toggle, change } = useLang();
+  const { init, data, olanguage, open, toggle, change, isInitialized } = useLang();
   const router = useRouter();
   const { state: { isConnected } } = useWalletAuth({})
   
@@ -24,6 +24,10 @@ const Index: React.FC<IIndexProps> = ({}) => {
     change(params);
     router.replace('/', { locale: params.value });
   };
+
+  if (!isInitialized) {
+    return null; // 或者返回一个加载状态
+  }
 
   console.log('isConnected', isConnected)
 

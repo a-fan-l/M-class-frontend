@@ -9,7 +9,6 @@ import utc from 'dayjs/plugin/utc';
 
 dayjs.extend(utc);
 
-
 type TimeUnit = 'minute' | 'hour' | 'day';
 
 interface StorageData<T> {
@@ -49,11 +48,17 @@ const convertToMilliseconds = (duration: number, unit: TimeUnit): number => {
 };
 
 /**
+ * 检查是否在浏览器环境中
+ */
+const isBrowser = typeof window !== 'undefined';
+
+/**
  * 获取存储实例
  * @param islocal 是否使用 localStorage
  * @returns Storage 实例
  */
-const getStorageInstance = (islocal: boolean): Storage => {
+const getStorageInstance = (islocal: boolean): Storage | null => {
+  if (!isBrowser) return null;
   return islocal ? window.localStorage : window.sessionStorage;
 };
 
@@ -72,7 +77,11 @@ export const setStorage = <T>({
   unit = 'hour',
   islocal = true,
 }: SetStorageParams<T>) => {
+  if (!isBrowser) return;
+  
   const storage = getStorageInstance(islocal);
+  if (!storage) return;
+
   const now = Date.now();
   const expireInMs = expire ? convertToMilliseconds(expire, unit) : 0;
 
@@ -86,15 +95,17 @@ export const setStorage = <T>({
   storage.setItem(key, JSON.stringify(data));
 };
 
-
 export const getStorage = <T>({
   key,
   isexpired = false,
   islocal = true,
 }: GetStorageParams): StorageData<T> | null => {
+  if (!isBrowser) return null;
+  
   const storage = getStorageInstance(islocal);
-  const data = storage.getItem(key);
+  if (!storage) return null;
 
+  const data = storage.getItem(key);
   if (!data) return null;
 
   try {
@@ -123,7 +134,11 @@ export const getStorage = <T>({
  * @param islocal 是否使用 localStorage，默认为 true
  */
 export const removeStorage = (key: string, islocal = true): void => {
+  if (!isBrowser) return;
+  
   const storage = getStorageInstance(islocal);
+  if (!storage) return;
+  
   storage.removeItem(key);
 };
 
@@ -132,7 +147,11 @@ export const removeStorage = (key: string, islocal = true): void => {
  * @param islocal 是否使用 localStorage，默认为 true
  */
 export const clearStorage = (islocal = true): void => {
+  if (!isBrowser) return;
+  
   const storage = getStorageInstance(islocal);
+  if (!storage) return;
+  
   storage.clear();
 };
 
@@ -141,12 +160,16 @@ export const clearStorage = (islocal = true): void => {
  * @param islocal 是否使用 localStorage，默认为 true
  */
 export const getItem = ({ key, islocal = true }: { key: string; islocal?: boolean }) => {
+  if (!isBrowser) return null;
+  
   const storage = getStorageInstance(islocal);
+  if (!storage) return null;
+  
   return storage.getItem(key);
 };
 
 /**
- * 获取存储数据
+ * 设置存储数据
  * @param islocal 是否使用 localStorage，默认为 true
  */
 export const setItem = ({
@@ -158,7 +181,11 @@ export const setItem = ({
   value: string;
   islocal?: boolean;
 }) => {
+  if (!isBrowser) return;
+  
   const storage = getStorageInstance(islocal);
+  if (!storage) return;
+  
   return storage.setItem(key, value);
 };
 
