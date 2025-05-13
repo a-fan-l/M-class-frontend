@@ -7,7 +7,7 @@ import { useTranslations } from 'next-intl';
 interface ExchangeInfoProps {
   exchangeRate: string;
   ydContract: string;
-  ydTokenLink: string;
+  ydTokenLink?: string;
   showCopy?: boolean;
   onCopy?: () => void;
 }

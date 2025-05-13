@@ -66,16 +66,16 @@ const useLanguage = () => {
     if (params.value === current) return;
     setLanguage(params.value);
     if (typeof window !== 'undefined') {
-      setItem({ key: LANGUAGE_STORAGE_KEY, value: params.value });
+    setItem({ key: LANGUAGE_STORAGE_KEY, value: params.value });
     }
   };
 
   // Initialize the language from storage
   const init = () => {
     if (typeof window !== 'undefined') {
-      const storedLang = getItem({ key: LANGUAGE_STORAGE_KEY });
-      const lang = data.find((o) => o.value === storedLang) || data[0];
-      change(lang);
+    const storedLang = getItem({ key: LANGUAGE_STORAGE_KEY });
+    const lang = data.find((o) => o.value === storedLang) || data[0];
+    change(lang);
     }
     setIsInitialized(true);
   };

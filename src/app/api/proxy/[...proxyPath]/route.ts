@@ -3,27 +3,28 @@ import { NextRequest, NextResponse } from 'next/server';
 // 后端 API 基础 URL
 const API_BASE = 'https://gkqtkozfuacdkqfa5x6ppif4nm0iutee.lambda-url.us-west-2.on.aws/api';
 
-export async function GET(req: NextRequest, { params }: { params: { proxyPath: string[] } }) {
-  return proxyRequest(req, params);
+export async function GET(req: NextRequest) {
+  return proxyRequest(req);
 }
 
-export async function POST(req: NextRequest, { params }: { params: { proxyPath: string[] } }) {
-  return proxyRequest(req, params);
+export async function POST(req: NextRequest) {
+  return proxyRequest(req);
 }
 
-export async function PUT(req: NextRequest, { params }: { params: { proxyPath: string[] } }) {
-  return proxyRequest(req, params);
+export async function PUT(req: NextRequest) {
+  return proxyRequest(req);
 }
 
-export async function DELETE(req: NextRequest, { params }: { params: { proxyPath: string[] } }) {
-  return proxyRequest(req, params);
+export async function DELETE(req: NextRequest) {
+  return proxyRequest(req);
 }
 
-async function proxyRequest(req: NextRequest, params: { proxyPath: string[] }) {
+async function proxyRequest(req: NextRequest) {
   try {
-    // 验证参数
-    if (!params || !params.proxyPath || !Array.isArray(params.proxyPath)) {
-      console.error('无效的路由参数:', params);
+    // 解析 proxyPath
+    const pathMatch = req.nextUrl.pathname.match(/\/api\/proxy\/(.*)/);
+    const proxyPath = pathMatch && pathMatch[1] ? pathMatch[1].split('/') : [];
+    if (!proxyPath.length) {
       return new NextResponse(
         JSON.stringify({ error: '无效的路由参数', details: 'proxyPath 未定义或不是数组' }),
         {
@@ -37,7 +38,7 @@ async function proxyRequest(req: NextRequest, params: { proxyPath: string[] }) {
     }
 
     // 构建目标 URL
-    const targetUrl = `${API_BASE}/${params.proxyPath.join('/')}`;
+    const targetUrl = `${API_BASE}/${proxyPath.join('/')}`;
     console.log('代理请求至:', targetUrl);
     console.log('请求方法:', req.method);
 

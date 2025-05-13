@@ -59,7 +59,7 @@ const isBrowser = typeof window !== 'undefined';
  */
 const getStorageInstance = (islocal: boolean): Storage | null => {
   if (!isBrowser) return null;
-  return islocal ? window.localStorage : window.sessionStorage;
+    return islocal ? window.localStorage : window.sessionStorage;
 };
 
 /**
