@@ -1,6 +1,5 @@
 export async function getLocales(locale: string, d_language: string = 'en') {
   try {
-    console.log(locale, 'locale');
     const res = (await import(`@/locales/${locale}/index.ts`)).default;
     return res;
   } catch (error) {

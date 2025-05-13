@@ -5,20 +5,59 @@
   },
   "title": "M Class",
   "desc": "M Class DeFi Trading, Completely Trustless",
-  "team": {
-    "title": "Our Team",
-    "description": "Meet the team behind our courses and projects"
-  },
   "banner": {
     "title": "BOOST YOUR STUDENT LEARNING JOURNEY",
-    "description": "The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology"
+    "description": "The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology The next generation gaming ecosystem for IGOs and NFT market Secure crypto solutions by blockchain technology",
+    "button": {
+      "course": "Course",
+      "apply": "Apply Project"
+    }
+  },
+  "info": {
+    "course": "Course",
+    "type": "Type",
+    "users": "Users",
+    "createTime": "CreateTime"
   },
   "course": {
     "title": "Popular Course",
-    "description": "There are all kinds of courses, buy the courses you like."
+    "description": "There are all kinds of courses, buy the courses you like.",
+    "button": {
+      "view": "View All Course",
+      "like": "Like it",
+      "buy": "Buy Course"
+    }
   },
   "contact": {
     "title": "Get alerts 💌 for new IGOs & IDOs",
-    "description": "Sign up for newsletter to get more News and Updates"
+    "description": "Sign up for newsletter to get more News and Updates",
+    "button": "Contact",
+    "input": {
+      "placeholder": "Enter your email"
+    }
+  },
+  "faq": {
+    "title": "FAQs",
+    "description": "Frequently Asked Questions",
+    "question1": "I have no programming or blockchain experience. Can I take a Web3 course?",
+    "answer1": "Yes, many Web3 courses (e.g., from Dapp University or Web3 University) are designed for beginners, starting with blockchain basics, Ethereum, and Solidity programming. Look for courses that include JavaScript, React, and Web3.js introductions. Free resources are also available for absolute beginners.",
+    "question2": "I’ve heard about YD ETH or Wrapped ETH in DApps. What are they?",
+    "answer2": "Wrapped ETH (WETH) is ETH wrapped into an ERC-20-compliant token, enabling seamless interaction with smart contracts and DApps on Ethereum. YD ETH may be a project-specific wrapped token (needs further clarification). Wrapped tokens are essential for DeFi and NFT marketplaces, as DApps often require ERC-20 tokens for transactions like buying tokens or NFTs.",
+    "question3": "What is the difference between a DeFi course and a Web3 course?",
+    "answer3": "DeFi courses focus on decentralized finance protocols and applications, while Web3 courses cover broader blockchain technology and its applications.",
+    "question4": "Can I create my own token or DApp after completing a Web3 course?",
+    "answer4": "Absolutely! After completing a course covering Solidity and Web3.js, you’ll have the skills to create ERC-20 tokens (e.g., a Dapp Token) or ERC-721 NFTs and develop simple DApps like token exchanges or decentralized marketplaces. Courses often include practical projects, such as deploying smart contracts to Ethereum testnets. Continued practice and open-source tutorials (e.g., from Alchemy or Web3 University) will help you build more complex projects.",
+    "question5": "Can I learn to develop a full DApp through a Web3 course?",
+    "answer5": "Yes, many Web3 courses (e.g., Coursera’s Full-Stack DApp development or free YouTube tutorials) guide you through building a DApp from scratch. They cover Solidity smart contract development, Web3.js for frontend interaction, tools like Hardhat or Truffle, and Ethereum blockchain integration. You’ll learn to create DApps like token swaps or NFT marketplaces. Project-based courses are recommended for hands-on experience."
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Meet the team behind our courses and projects",
+    "role": {
+      "director": "Director",
+      "sr_ui_designer": "Sr. UI Designer",
+      "fullstack_developer": "Fullstack Developer",
+      "sr_developer": "Sr. Developer"
+    }
   }
 }

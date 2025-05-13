@@ -26,11 +26,11 @@ const Email = () => {
                     <div className="max-w-2xl mx-auto flex flex-row gap-4">
                         <Input 
                             type="email" 
-                            placeholder="Enter your email"  
+                            placeholder={t('contact.input.placeholder')}
                             className="w-full h-13 text-[var(--section-desc)] text-xl"
                         />
                         <Button className="bg-primary/30 hover:bg-primary/50 cursor-pointer h-13 px-6">
-                            <span className="text-xl">Contact</span>
+                            <span className="text-xl">{t('contact.button')}</span>
                         </Button>
                     </div>
                     <span className="border-shadow shadow-1"></span>

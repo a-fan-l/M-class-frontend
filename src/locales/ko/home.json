@@ -1,24 +1,63 @@
 {
   "metadata": {
     "title": "M 클래스",
-    "desc": "M 클래스 | 완전히 신뢰 없는 자동화된 DeFi 거래"
+    "desc": "M 클래스 | 완전히 신뢰할 수 있는 자동화된 DeFi 거래"
   },
   "title": "M 클래스",
-  "desc": "M 클래스 DeFi 거래, 완전히 신뢰 없는",
-  "team": {
-    "title": "우리 팀",
-    "description": "우리 강의와 프로젝트를 뒷받침하는 팀을 만나세요"
-  },
+  "desc": "M 클래스 DeFi 거래, 완전히 신뢰할 수 있음",
   "banner": {
-    "title": "학생의 학습 여정을 부스트하세요",
-    "description": "다음 세대 게임 생태계를 위한 IGO 및 NFT 시장 보안 암호 솔루션을 위한 블록체인 기술"
+    "title": "학생 학습 여정을 향상시키세요",
+    "description": "IGO 및 NFT 시장을 위한 차세대 게임 생태계 블록체인 기술로 안전한 암호화 솔루션 IGO 및 NFT 시장을 위한 차세대 게임 생태계 블록체인 기술로 안전한 암호화 솔루션 IGO 및 NFT 시장을 위한 차세대 게임 생태계 블록체인 기술로 안전한 암호화 솔루션",
+    "button": {
+      "course": "코스",
+      "apply": "프로젝트 신청"
+    }
+  },
+  "info": {
+    "course": "코스",
+    "type": "유형",
+    "users": "사용자",
+    "createTime": "생성 시간"
   },
   "course": {
-    "title": "인기 강의",
-    "description": "좋아하는 강의를 구매하세요."
+    "title": "인기 코스",
+    "description": "다양한 코스가 있으며, 원하는 코스를 구매하세요.",
+    "button": {
+      "view": "모든 코스 보기",
+      "like": "좋아요",
+      "buy": "코스 구매"
+    }
   },
   "contact": {
-    "title": "새로운 IGO 및 IDO에 대한 경고 💌",
-    "description": "뉴스 및 업데이트를 더 많이 받으려면 뉴스레터에 가입하세요"
+    "title": "새로운 IGO 및 IDO 알림 💌 받기",
+    "description": "뉴스레터에 가입하여 최신 소식과 업데이트를 받아보세요",
+    "button": "연락처",
+    "input": {
+      "placeholder": "이메일을 입력하세요"
+    }
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "description": "자주 묻는 질문들",
+    "question1": "프로그래밍이나 블록체인 경험이 없어도 Web3 코스를 수강할 수 있나요?",
+    "answer1": "네, Dapp University나 Web3 University와 같은 많은 Web3 코스는 초보자를 위해 설계되었으며, 블록체인 기초, Ethereum, Solidity 프로그래밍부터 시작합니다. JavaScript, React, Web3.js 입문이 포함된 코스를 찾으세요. 초보자를 위한 무료 자료도 제공됩니다.",
+    "question2": "DApp에서 YD ETH 또는 Wrapped ETH에 대해 들었는데, 이것들은 무엇인가요?",
+    "answer2": "Wrapped ETH(WETH)는 ETH를 ERC-20 표준 토큰으로 변환한 것으로, Ethereum의 스마트 계약 및 DApp과 원활하게 상호작용할 수 있습니다. YD ETH는 프로젝트별 특정 토큰일 수 있습니다(추가 확인 필요). 래핑된 토큰은 DeFi 및 NFT 시장에서 필수적이며, DApp은 토큰 구매나 NFT 거래와 같은 작업에 ERC-20 토큰을 요구합니다.",
+    "question3": "DeFi 코스와 Web3 코스의 차이점은 무엇인가요?",
+    "answer3": "DeFi 코스는 탈중앙화 금융 프로토콜과 애플리케이션에 초점을 맞추고, Web3 코스는 블록체인 기술과 그 응용 분야를 더 광범위하게 다룹니다.",
+    "question4": "Web3 코스를 완료한 후 나만의 토큰이나 DApp을 만들 수 있나요?",
+    "answer4": "물론입니다! Solidity와 Web3.js를 다루는 코스를 완료하면 ERC-20 토큰(예: Dapp Token) 또는 ERC-721 NFT를 만들 수 있는 기술을 갖추게 되며, 토큰 교환 또는 탈중앙화 마켓과 같은 간단한 DApp을 개발할 수 있습니다. 코스는 종종 Ethereum 테스트넷에 스마트 계약을 배포하는 실습 프로젝트를 포함합니다. 지속적인 연습과 Alchemy 또는 Web3 University의 오픈소스 튜토리얼은 더 복잡한 프로젝트를 구축하는 데 도움이 됩니다.",
+    "question5": "Web3 코스를 통해 완전한 DApp 개발을 배울 수 있나요?",
+    "answer5": "네, Coursera의 풀스택 DApp 개발 또는 무료 YouTube 튜토리얼과 같은 많은 Web3 코스는 처음부터 DApp을 구축하는 과정을 안내합니다. Solidity 스마트 계약 개발, Web3.js를 통한 프론트엔드 상호작용, Hardhat 또는 Truffle 도구, Ethereum 블록체인 통합을 다룹니다. 토큰 스왑이나 NFT 마켓과 같은 DApp을 만들 수 있습니다. 실습 경험을 위해 프로젝트 기반 코스를 추천합니다."
+  },
+  "team": {
+    "title": "우리 팀",
+    "description": "코스와 프로젝트를 이끄는 팀을 만나보세요",
+    "role": {
+      "director": "디렉터",
+      "sr_ui_designer": "선임 UI 디자이너",
+      "fullstack_developer": "풀스택 개발자",
+      "sr_developer": "선임 개발자"
+    }
   }
 }

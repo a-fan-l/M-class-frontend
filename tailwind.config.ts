@@ -37,6 +37,7 @@ module.exports = {
         secondary: 'var(--secondary)',
         'secondary-foreground': 'var(--secondary-foreground)',
         'section-background': 'var(--section-background)',
+        'popover-primary': 'var(--popover-primary)',
       },
       minHeight: {
         '8': '2rem',

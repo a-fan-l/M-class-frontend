@@ -1,7 +1,8 @@
 import React from "react";
 
-import Item from "./item";
+import { useTranslations } from "next-intl";
 
+import Item from "./item";
 
 export interface MetricsGridProps {
   courseCount: number;
@@ -16,26 +17,27 @@ const MetricsGrid: React.FC<MetricsGridProps> = ({
   userCount,
   createTime,
  }) => {
+  const t = useTranslations('home');
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-4 gap-2">
         <Item
-          label="Course"
+          label={t('info.course')}
           value={courseCount}
           symbol=''
         />
         <Item
-          label="Type"
+          label={t('info.type')}
           value={typeCount}
           symbol=''
         />
         <Item
-          label="Users"
+          label={t('info.users')}
           value={userCount}
           symbol=''
         />
         <Item
-          label="CreateTime"
+          label={t('info.createTime')}
           value={createTime}
           symbol=''
         />

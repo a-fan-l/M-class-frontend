@@ -4,6 +4,7 @@ import { Heart } from 'lucide-react';
 import { cn } from '@utils/index';
 import { FileInfo } from '@/types/course';
 import { Button } from "@/components/ui/button";
+import { useTranslations } from 'next-intl';
 
 import './style.css';
 
@@ -20,9 +21,8 @@ export interface CourseItemProps {
   duration: number;
 }
 const Item: React.FC<CourseItemProps> = ({ id, title, category, createdAt, imgInfo, bgColor, description, imgUrl, price, duration }) => {
-  const [likes, setLikes] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
-  
+  const t = useTranslations('home');
 
   const handleLike = async () => {
     // try {
@@ -62,9 +62,13 @@ const Item: React.FC<CourseItemProps> = ({ id, title, category, createdAt, imgIn
             onClick={handleLike}
           >
             <Heart className={cn(isLiked ? "fill-red-500 transform scale-140" : "", "transition-all duration-100")}/>
-            <span>like it</span>
+            <span>
+              {t('course.button.like')}
+            </span>
           </Button>
-          <Button className='text-[var(--section-desc)]' variant='outline'>Buy now</Button>          
+          <Button className='text-[var(--section-desc)]' variant='outline'>
+            {t('course.button.buy')}
+          </Button>          
         </div>
     </div>
   )

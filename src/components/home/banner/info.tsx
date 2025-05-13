@@ -18,13 +18,13 @@ const Info: React.FC = () => {
           variant="default"
           className="bg-primary/80 text-black/80 hover:bg-primary px-10 py-6 h-12 text-xl cursor-pointer border-1"
         >
-          Course
+          {t('banner.button.course')}
         </Button>
         <Button
           variant="outline"
           className="border-white text-white hover:bg-white/10 px-10 py-6 h-12 text-xl cursor-pointer"
         >
-          APPLY PROJECT
+          {t('banner.button.apply')}
         </Button>
       </div>
     </div>

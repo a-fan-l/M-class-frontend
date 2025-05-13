@@ -3,50 +3,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
-import { CourseListResponse, Course } from '@/types/course';
+import { Course } from '@/types/course';
 import useHome from '@/hooks/useHome';
 
 import './style.css';
 import Item, { CourseItemProps } from './item';
-
-// const courseList = [
-//   {
-//     id: 1,
-//     title: 'Aora',
-//     category: 'Development',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-//     year: '2024',
-//     image: '/static/home/course.png',
-//     bgColor: '#8c8472',
-//   },
-//   {
-//     id: 2,
-//     title: 'Code Screenshot',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-//     category: 'Development & Design',
-//     year: '2024',
-//     image: '/static/home/course.png',
-//     bgColor: '#f8d7ea',
-//   },
-//   {
-//     id: 3,
-//     title: 'Code Screenshot',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-//     category: 'Development & Design',
-//     year: '2024',
-//     image: '/static/home/course.png',
-//     bgColor: '#fff',
-//   },
-//   {
-//     id: 4,
-//     title: 'Code Screenshot',
-//     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.',
-//     category: 'Development & Design',
-//     year: '2024',
-//     image: '/static/home/course.png',
-//     bgColor: 'rgba(187 247 208)',
-//   }
-// ];
 
 export interface CourseListProps {
   data: Course[]
@@ -117,7 +78,6 @@ const CourseSection = ({ data }: CourseListProps) => {
         <h1 className='mb-2 font-bold text-4xl text-[var(--section-title)]'>
           {t('course.title')}
         </h1>
-
         <h2 className='text-[var(--section-desc)] md:mb-10 mb-5 text-xl'>
           {t('course.description')}
         </h2>
@@ -132,7 +92,9 @@ const CourseSection = ({ data }: CourseListProps) => {
           ))}
         </div>
         <div className='flex justify-center'>
-          <Link href="/course" className='cursor-pointer rounded-full text-secondary/80 px-5 py-3 bg-primary/10 hover:bg-primary/20 transition-colors duration-300 hover:text-secondary'>View All Course</Link>
+          <Link href="/course" className='cursor-pointer rounded-full text-secondary/80 px-5 py-3 bg-primary/10 hover:bg-primary/20 transition-colors duration-300 hover:text-secondary'>
+            {t('course.button.view')}
+          </Link>
         </div>
       </div>
     </div>

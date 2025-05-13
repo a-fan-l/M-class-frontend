@@ -21,7 +21,6 @@
   --secondary-foreground: oklch(0.205 0 0);
   --third-foreground: rgba(244, 246, 250, 0.8);
   --desc-foreground: rgba(244, 246, 250, 0.8);
-
   --popover-primary: rgba(255, 255, 255, 0.9);
   --popover-foreground: oklch(0.145 0 0);
 
@@ -113,8 +112,18 @@ body {
 }
 
 .tools-items-popover {
-  @apply bg-popover-primary z-[9991] mt-2 w-40 min-w-40 border-none p-0;
+  background-color: var(--popover-primary);
+  @apply z-[9991] mt-2 w-40 min-w-40 border-none p-0;
 }
+
+:root .tools-items-popover {
+  background-color: var(--popover-primary);
+}
+
+.dark .tools-items-popover {
+  background-color: var(--popover-primary);
+}
+
 .tools-items-popover .languages-li:hover,
 .tools-items-popover .languages-li.active {
   @apply bg-black/[0.04] dark:bg-white/[0.04];
