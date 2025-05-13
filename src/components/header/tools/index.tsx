@@ -20,7 +20,7 @@ export interface HeaderToolsProps {
 
 const Index: React.FC<HeaderToolsProps> = ({
   children,
-  isMode = true,
+  isMode = false,
   isLang = true,
   isSign = true,
   langProps,

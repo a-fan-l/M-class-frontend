@@ -31,7 +31,6 @@ const Index: React.FC<IIndexProps> = ({}) => {
     <Header
       name='M Class'
       // isLogo={isLogo}
-      isMode
       isMenu
       langProps={{
         data,
