@@ -112,16 +112,12 @@ body {
 }
 
 .tools-items-popover {
-  background-color: var(--popover-primary);
   @apply z-[9991] mt-2 w-40 min-w-40 border-none p-0;
+  background-color: #18181B;
 }
 
-:root .tools-items-popover {
-  background-color: var(--popover-primary);
-}
-
-.dark .tools-items-popover {
-  background-color: var(--popover-primary);
+.tools-items-popover .languages-li.active {
+  @apply text-white/80;
 }
 
 .tools-items-popover .languages-li:hover,
@@ -129,7 +125,8 @@ body {
   @apply bg-black/[0.04] dark:bg-white/[0.04];
 }
 .languages-li .li-text {
-  @apply text-[#18181B] dark:text-white/50;
+  /* @apply text-[#18181B] dark:text-white/50; */
+  @apply text-white/50;
 }
 .languages-li .li-text:hover,
 .languages-li .li-text.active {
