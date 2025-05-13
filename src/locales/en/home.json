@@ -59,5 +59,14 @@
       "fullstack_developer": "Fullstack Developer",
       "sr_developer": "Sr. Developer"
     }
+  },
+  "wrap": {
+    "rate": "Exchange Rate",
+    "contract": "YD Token Contract",
+    "balance": "Balance",
+    "max": "Max",
+    "wrap": "Wrap",
+    "sell": "Sell YD",
+    "buy": "Buy YD"
   }
 }

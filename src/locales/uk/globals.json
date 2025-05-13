@@ -15,7 +15,8 @@
     "sign": "Підписати",
     "connect": "Підключити",
     "disconnect": "Відключити",
-    "connectWallet": "Підключити кошелек"
+    "connectWallet": "Підключити кошелек",
+    "login": "Вхід"
   }
 }
   

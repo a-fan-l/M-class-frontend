@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useWrap } from "@/hooks/useWrap";
 import TokenInput from "./input";
+import { useTranslations } from "next-intl";
 
 interface TokenSwapProps {}
 
@@ -16,7 +17,8 @@ const TokenSwap: React.FC<TokenSwapProps> = () => {
   const { address } = useAccount();
   const { state: { ydBalance, ydContract }, actions: { getYdBalance, getBalance } } = useWrap();
   const [ethBalance, setEthBalance] = useState<string>("0");
-
+  const t = useTranslations('home')
+  
   const handleAmountChange = (value: string) => {
     setAmount(value);
   };
@@ -109,7 +111,7 @@ const TokenSwap: React.FC<TokenSwapProps> = () => {
         disabled={(!amount || !address) || false}
         className="w-full bg-primary hover:bg-primary/90 text-black py-5"
       >
-        {isSwapped ? "Sell YD" : "Buy YD"}
+        {isSwapped ? t('wrap.sell') : t('wrap.buy')}
       </Button>
     </Card>
   );

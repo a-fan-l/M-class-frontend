@@ -35,7 +35,7 @@ const Login: FC<LoginProps> = () => {
         {isConnecting || isReconnecting ? (
           <Spinner size="sm" color="info" className="mr-1" />
         ) : null}
-        Login
+        {t('btn.login')}
       </div>
     </button>
   );

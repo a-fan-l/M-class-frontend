@@ -59,5 +59,14 @@
       "fullstack_developer": "풀스택 개발자",
       "sr_developer": "선임 개발자"
     }
+  },
+  "wrap": {
+    "rate": "환율",
+    "contract": "YD 토큰 계약",
+    "balance": "잔액",
+    "max": "최대",
+    "wrap": "랩핑",
+    "sell": "YD 판매",
+    "buy": "YD 구매"
   }
 }

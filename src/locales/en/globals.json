@@ -15,6 +15,7 @@
         "sign": "Sign",
         "connect": "Connect",
         "disconnect": "Disconnect",
-        "connectWallet": "Connect Wallet"
+        "connectWallet": "Connect Wallet",
+        "login": "Login"
     }
 }
